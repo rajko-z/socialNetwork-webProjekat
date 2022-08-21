@@ -23,9 +23,15 @@ public class UserRepository extends GenericRepository<User> {
 
 
 	public User getByUsername(String username) {
-		return this.data.values().stream().
-				filter(u -> u.getUsername().equals(username)).
-				findFirst().orElse(null);
+		return this.data.values().stream()
+				.filter(u -> u.getUsername().equals(username))
+				.findFirst().orElse(null);
+	}
+
+	public User getByUsernameAndPassword(String username, String password) {
+		return this.data.values().stream()
+				.filter(u -> u.getUsername().equals(username) && u.getPassword().equals(password))
+				.findFirst().orElse(null);
 	}
 
 	@Override

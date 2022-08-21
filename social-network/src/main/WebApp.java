@@ -1,6 +1,7 @@
 package main;
 
 
+import controllers.AuthController;
 import controllers.ImageController;
 import controllers.UserController;
 import repository.RepoFactory;
@@ -45,6 +46,8 @@ public class WebApp {
             after("/*", (req, res) -> {
             });
 
+
+            post("/auth", AuthController::login);
             get("/images", ImageController::getAll);
             get("/images/:id", ImageController::getById);
             post("/users", UserController::registerNewUser);

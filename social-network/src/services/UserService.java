@@ -32,8 +32,16 @@ public class UserService {
         this.userRepository.saveData(Constants.FILE_USERS_HEADER);
     }
 
-    private boolean userAlreadyExist(String username) {
+    public boolean userAlreadyExist(String username) {
         return userRepository.getByUsername(username) != null;
+    }
+
+    public User getUserByUsername(String username) {
+        return userRepository.getByUsername(username);
+    }
+
+    public User getUserByUsernameAndPassword(String username, String password) {
+        return userRepository.getByUsernameAndPassword(username, password);
     }
 
 

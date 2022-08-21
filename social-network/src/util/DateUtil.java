@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class DateUtil {
 	
-	DateTimeFormatter localDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	DateTimeFormatter localDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	public DateTimeFormatter localDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	public DateTimeFormatter localDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	public LocalDate parseStringToLocalDate(String date) {
 		return LocalDate.parse(date, localDateFormatter);
