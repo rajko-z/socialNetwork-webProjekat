@@ -43,8 +43,8 @@ public class DirectMessage extends Entity {
 	@Override
 	public String toString() {
 		return "DirectMessage{" +
-				"from=" + from.getUserName() +
-				", to=" + to.getUserName() +
+				"from=" + from.getUsername() +
+				", to=" + to.getUsername() +
 				", createdAt=" + createdAt +
 				", text='" + text + '\'' +
 				", adminSent=" + adminSent +

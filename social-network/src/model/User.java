@@ -6,7 +6,7 @@ import java.util.List;
 import util.CSVFormatUtil;
 
 public class User extends Entity{
-	private String userName;
+	private String username;
 	private String password;
 	private String name;
 	private String surname;
@@ -32,10 +32,23 @@ public class User extends Entity{
 		super();
 	}
 	
-	public User(Long id, String userName, String password, String name, String surname,
-			LocalDate dateOfBirth, Gender gender,boolean accountPrivate, boolean isBlocked, Role role) {
+	public User(Long id, String username, String password, String name, String surname,
+				LocalDate dateOfBirth, Gender gender, boolean accountPrivate, boolean isBlocked, Role role) {
 		super(id);
-		this.userName = userName;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.dateOfBirth = dateOfBirth;
+		this.gender = gender;
+		this.accountPrivate = accountPrivate;
+		this.isBlocked = isBlocked;
+		this.role = role;
+	}
+
+	public User(String username, String password, String name, String surname,
+				LocalDate dateOfBirth, Gender gender, boolean accountPrivate, boolean isBlocked, Role role) {
+		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
@@ -51,8 +64,8 @@ public class User extends Entity{
 		return isBlocked;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
 	public String getPassword() {
@@ -124,7 +137,7 @@ public class User extends Entity{
 		
 		return String.format("%d|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s",
                 this.getId(),
-                this.getUserName(),
+                this.getUsername(),
                 this.getPassword(),
                 this.getName(),
                 this.getSurname(),
@@ -142,7 +155,7 @@ public class User extends Entity{
 	@Override
 	public String toString() {
 		return "User{" +
-				"userName='" + userName + '\'' +
+				"userName='" + username + '\'' +
 				", password='" + password + '\'' +
 				", name='" + name + '\'' +
 				", surname='" + surname + '\'' +

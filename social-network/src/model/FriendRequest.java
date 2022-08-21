@@ -46,8 +46,8 @@ public class FriendRequest extends Entity{
 	@Override
 	public String toString() {
 		return "FriendRequest{" +
-				"from=" + from.getUserName() +
-				", to=" + to.getUserName() +
+				"from=" + from.getUsername() +
+				", to=" + to.getUsername() +
 				", createdAt=" + createdAt +
 				'}';
 	}

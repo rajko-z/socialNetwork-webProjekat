@@ -2,6 +2,7 @@ package main;
 
 
 import controllers.ImageController;
+import controllers.UserController;
 import repository.RepoFactory;
 import spark.route.RouteOverview;
 
@@ -46,7 +47,7 @@ public class WebApp {
 
             get("/images", ImageController::getAll);
             get("/images/:id", ImageController::getById);
-
+            post("/users", UserController::registerNewUser);
         });
 
     }

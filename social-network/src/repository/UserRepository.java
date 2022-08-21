@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import model.*;
 import util.CSVFormatUtil;
@@ -19,7 +20,14 @@ public class UserRepository extends GenericRepository<User> {
 		this.dateUtil = new DateUtil();
 		this.csvUtil = new CSVFormatUtil();
 	}
-	
+
+
+	public User getByUsername(String username) {
+		return this.data.values().stream().
+				filter(u -> u.getUsername().equals(username)).
+				findFirst().orElse(null);
+	}
+
 	@Override
 	protected User createEntityFromTokens(String[] tokens) {
 		Long id = Long.parseLong(tokens[0]);

@@ -71,7 +71,7 @@ public class Comment extends Entity {
 				"text='" + text + '\'' +
 				", createdAt=" + createdAt +
 				", modifiedAt=" + modifiedAt +
-				", userName=" + user.getUserName() +
+				", userName=" + user.getUsername() +
 				", isDeleted=" + isDeleted +
 				'}';
 	}
