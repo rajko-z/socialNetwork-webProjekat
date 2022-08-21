@@ -1,5 +1,5 @@
 # id | userName | password | name | surname | dateOfBirth | gender | accountPrivate | isBlocked | role | postId for profile image | posts ids | friends ids
-1|admin1|a|Admin1|Admin1|2000-04-22|M|true|false|A|null|null|null
+1|admin1|a|Admin1|Admin1|2000-04-22|M|true|false|A|null|31|null
 2|admin2|a|Admin2|Admin2|2000-04-22|M|true|false|A|null|null|null
 3|karen|123|Karen|Karenis|2000-04-22|F|true|false|R|1|11,12,13,14|4,5,6,7,8
 4|sarah|123|Sarah|Sarisius|2000-04-22|F|false|false|R|2|15,16,17|3,5,6

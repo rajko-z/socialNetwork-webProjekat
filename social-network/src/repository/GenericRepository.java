@@ -60,10 +60,11 @@ public abstract class GenericRepository<T extends Entity> {
 
 	}
 	
-	public void add(T entity) {
+	public T add(T entity) {
 		Long newId = generateId();
 		entity.setId(newId);
 		this.data.put(entity.getId(), entity);
+		return entity;
 	}
 	
 	public T getById(Long id) {

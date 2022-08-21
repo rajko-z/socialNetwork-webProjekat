@@ -12,6 +12,9 @@ public class Image extends Entity {
 		super(id);
 		this.name = name;
 	}
+	public Image(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;

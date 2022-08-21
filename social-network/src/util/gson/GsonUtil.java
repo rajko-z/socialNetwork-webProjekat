@@ -15,4 +15,14 @@ public class GsonUtil {
         gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer());
         return gsonBuilder.setPrettyPrinting().create();
     }
+
+    public static Gson createGsonWithDateSupportAndExclusionStrategy(String exclusionRegex) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer());
+        gsonBuilder.setExclusionStrategies(new AttributeExclusionStrategy(exclusionRegex)).create();
+        return gsonBuilder.setPrettyPrinting().create();
+    }
 }

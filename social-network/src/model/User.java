@@ -123,6 +123,10 @@ public class User extends Entity{
 		return friends;
 	}
 
+	public void addNewPost(Post post) {
+		this.posts.add(post);
+	}
+
 	@Override
 	public String formatEntityForFile() {
 		

@@ -30,6 +30,13 @@ public class Post extends Entity{
 		this.isDeleted = isDeleted;
 	}
 
+	public Post(String text, PostType type, LocalDateTime createdAt, boolean isDeleted) {
+		this.text = text;
+		this.type = type;
+		this.createdAt = createdAt;
+		this.isDeleted = isDeleted;
+	}
+
 	public boolean isDeleted() {
 		return isDeleted;
 	}
@@ -52,6 +59,13 @@ public class Post extends Entity{
 
 	public Image getImage() {
 		return image;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	@Override
