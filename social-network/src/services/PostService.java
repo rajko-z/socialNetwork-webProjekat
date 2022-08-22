@@ -5,6 +5,7 @@ import exceptions.BadRequestException;
 import exceptions.InternalAppException;
 import model.Image;
 import model.Post;
+import model.PostType;
 import model.User;
 import repository.PostRepository;
 import repository.RepoFactory;
@@ -33,11 +34,9 @@ public class PostService {
             case REGULAR_POST: {
                 return createRegularPost(newPostDTO, user);
             }
-            case IMAGE_POST: {
+            case IMAGE_POST:
+            case PROFILE_POST:{
                 return createImagePost(newPostDTO, user);
-            }
-            case PROFILE_POST: {
-                return createProfileImagePost(newPostDTO, user);
             }
             default:
                 throw new BadRequestException("Unknown post type: " + newPostDTO.getType().toString());
@@ -74,10 +73,25 @@ public class PostService {
     }
 
     private Post createImagePost(NewPostDTO newPostDTO, User user) {
-        return null;
+        if (newPostDTO.getBase64Image() == null || newPostDTO.getBase64Image().trim().isEmpty()) {
+            throw new BadRequestException("Base64 field must not be null or empty");
+        }
+        if (newPostDTO.getImageName() == null || newPostDTO.getImageName().trim().isEmpty()) {
+            throw new BadRequestException("Image name must be specified");
+        }
+        Image postImage = imageService.createImageFromBase64String(newPostDTO.getBase64Image(), newPostDTO.getImageName());
+        if (postImage == null) {
+            throw new InternalAppException("Error happened while adding image for post");
+        }
+        Post post = new Post(newPostDTO.getText(), newPostDTO.getType(), LocalDateTime.now(), false);
+        post.setImage(postImage);
+        Post addedPost = this.postRepository.add(post);
+        user.addNewPost(post);
+
+        if (newPostDTO.getType().equals(PostType.PROFILE_POST))
+            user.setProfileImage(addedPost);
+        saveDataAfterAddingPost();
+        return addedPost;
     }
 
-    private Post createProfileImagePost(NewPostDTO newPostDTO, User user) {
-        return null;
-    }
 }

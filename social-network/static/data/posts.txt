@@ -29,4 +29,3 @@
 28|P|ovo jfdsfdsfdsfdf d dfd e moj novi post1|23,24|2022-08-20 15:00:10|6|false
 29|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|25|2022-08-20 15:00:10|6|false
 30|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|26,27,28,29|2022-08-20 15:00:10|6|false
-31|R|Novii post|null|2022-08-21 22:36:42|11|false
