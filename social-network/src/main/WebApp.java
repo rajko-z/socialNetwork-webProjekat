@@ -1,10 +1,7 @@
 package main;
 
 
-import controllers.AuthController;
-import controllers.ImageController;
-import controllers.PostController;
-import controllers.UserController;
+import controllers.*;
 import repository.RepoFactory;
 import spark.route.RouteOverview;
 
@@ -53,6 +50,7 @@ public class WebApp {
             get("/images/:id", ImageController::getById);
             post("/users", UserController::registerNewUser);
             post("/posts", PostController::addPost);
+            get("/friendStatus/:username", FriendStatusController::getFriendStatusForUsername);
         });
 
     }
