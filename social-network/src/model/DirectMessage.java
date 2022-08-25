@@ -2,6 +2,8 @@ package model;
 
 import java.time.LocalDateTime;
 
+import util.DateUtil;
+
 
 public class DirectMessage extends Entity {
 	private User from;
@@ -13,6 +15,19 @@ public class DirectMessage extends Entity {
 	public DirectMessage() {
 		super();
 	}
+
+	public DirectMessage(Long id,User from, User to, LocalDateTime createdAt, String text, boolean adminSent) {
+		super(id);
+		this.from = from;
+		this.to = to;
+		this.createdAt = createdAt;
+		this.text = text;
+		this.adminSent = adminSent;
+	}
+
+	 
+
+ 
 
 	public User getFrom() {
 		return from;
@@ -35,9 +50,16 @@ public class DirectMessage extends Entity {
 	}
 
 	@Override
-	public String formatEntityForFile() {
-		// TODO Auto-generated method stub
-		return null;
+	public String formatEntityForFile() {            //# id | from user id | to user id | text | createdAt | adminSent
+		DateUtil dateUtil = new DateUtil();
+		return String.format("%d|%d|%d|%s|%s|%s",
+                this.getId(),
+                this.getFrom().getId(),
+                this.getTo().getId(),
+                this.getText(),
+                dateUtil.getStringFormatFromLocalDateTime(this.getCreatedAt()),
+                this.isAdminSent()
+                );
 	}
 
 	@Override

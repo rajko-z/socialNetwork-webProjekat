@@ -1,5 +1,7 @@
 package repository;
 
+import org.eclipse.jetty.server.handler.StatisticsHandler;
+
 import util.Constants;
 
 public class RepoFactory {
@@ -9,6 +11,7 @@ public class RepoFactory {
     public static PostRepository postRepo;
     public static CommentRepository commentRepo;
     public static FriendRequestRepository friendRequestRepo;
+    public static DirectMessageRepository directMessageRepository;
 
 
     public static void loadData() {
@@ -23,6 +26,9 @@ public class RepoFactory {
         friendRequestRepo = new FriendRequestRepository(Constants.FILE_FRIEND_REQUESTS, userRepo);
         friendRequestRepo.loadData();
         userRepo.setMissingBidirectionalParams(postRepo);
+        directMessageRepository = new DirectMessageRepository(Constants.FILE_DIRECT_MESSAGES, userRepo);
+        directMessageRepository.loadData();
+        
     }
 
 }
