@@ -20,6 +20,13 @@ public class FriendRequest extends Entity{
 		this.createdAt = createdAt;
 	}
 
+	public FriendRequest(User from, User to) {
+		super();
+		this.from = from;
+		this.to = to;
+		this.createdAt = LocalDateTime.now();
+	}
+
 	public User getFrom() {
 		return from;
 	}

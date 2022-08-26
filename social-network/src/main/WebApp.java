@@ -51,6 +51,9 @@ public class WebApp {
             post("/users", UserController::registerNewUser);
             post("/posts", PostController::addPost);
             get("/friendStatus/:username", FriendStatusController::getFriendStatusForUsername);
+            post("/friendStatus/sendRequestTo/:username", FriendStatusController::sendFriendRequest);
+            delete("/friendStatus/removeFriend/:username", FriendStatusController::removeFriend);
+            put("/friendStatus/acceptRequest/:username", FriendStatusController::acceptRequest);
         });
 
     }

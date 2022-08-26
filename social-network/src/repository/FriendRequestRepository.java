@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import model.FriendRequest;
 import model.User;
+import util.Constants;
 import util.DateUtil;
 
 public class FriendRequestRepository extends GenericRepository<FriendRequest> {
@@ -25,6 +26,17 @@ public class FriendRequestRepository extends GenericRepository<FriendRequest> {
 		LocalDateTime createdAt = dateUtil.parseStringToLocalDateTime(tokens[3]);
 		
 		return new FriendRequest(id, from, to, createdAt);
+	}
+
+	public boolean deleteRequest(User from, User to) {
+		FriendRequest request = this.data.values().stream().filter(r ->
+				r.getFrom().getUsername().equals(from.getUsername()) &&
+				r.getTo().getUsername().equals(to.getUsername())).findFirst().orElse(null);
+		if (request == null)
+			return false;
+		this.data.remove(request.getId());
+		this.saveData(Constants.FILE_FRIEND_REQUESTS_HEADER);
+		return true;
 	}
 	
 	
