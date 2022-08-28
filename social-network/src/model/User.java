@@ -116,9 +116,6 @@ public class User extends Entity{
 		this.friends = friends;
 	}
 
-	//# id | userName | password | name | surname | dateOfBirth | gender | accountPrivate | isBlocked | role | postId for profile image | posts ids | friends ids
-
-	
 	public List<User> getFriends() {
 		return friends;
 	}
@@ -129,6 +126,30 @@ public class User extends Entity{
 
 	public void addNewPost(Post post) {
 		this.posts.add(post);
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public void setAccountPrivate(boolean accountPrivate) {
+		this.accountPrivate = accountPrivate;
 	}
 
 	@Override

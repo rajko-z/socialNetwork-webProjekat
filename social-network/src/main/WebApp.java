@@ -49,6 +49,8 @@ public class WebApp {
             get("/images", ImageController::getAll);
             get("/images/:id", ImageController::getById);
             post("/users", UserController::registerNewUser);
+            put("/users", UserController::updateUser);
+            put("/users/changePassword", UserController::changePassword);
             post("/posts", PostController::addPost);
 
             get("/friendStatus/getAllFriendRequests", FriendStatusController::getAllFriendRequest);
