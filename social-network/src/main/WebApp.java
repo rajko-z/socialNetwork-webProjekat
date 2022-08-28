@@ -57,6 +57,7 @@ public class WebApp {
             post("/friendStatus/sendRequestTo/:username", FriendStatusController::sendFriendRequest);
             delete("/friendStatus/removeFriend/:username", FriendStatusController::removeFriend);
             put("/friendStatus/acceptRequest/:username", FriendStatusController::acceptRequest);
+            post("/sendMessageTo/:username/:text", DirectMessageController::sendDirectMessage);
         });
 
     }

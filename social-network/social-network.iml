@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="CheckStyle-IDEA-Module">
-    <option name="configuration">
-      <map />
-    </option>
-  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -12,34 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="gson-2.2.2" level="project" />
-    <orderEntry type="library" name="javax.servlet-api-3.1.0" level="project" />
-    <orderEntry type="library" name="javaxt-core" level="project" />
-    <orderEntry type="library" name="jetty-http-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-io-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-security-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-server-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-servlet-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-util-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-webapp-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-xml-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jjwt-api-0.11.1" level="project" />
-    <orderEntry type="library" name="jjwt-gson-0.11.1" level="project" />
-    <orderEntry type="library" name="jjwt-impl-0.11.1" level="project" />
-    <orderEntry type="library" name="slf4j-api-1.7.13" level="project" />
-    <orderEntry type="library" name="slf4j-api-1.7.21" level="project" />
-    <orderEntry type="library" name="slf4j-simple-1.7.21" level="project" />
-    <orderEntry type="library" name="spark-core-2.5.5" level="project" />
-    <orderEntry type="library" name="websocket-api-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="websocket-client-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="websocket-common-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="websocket-server-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="websocket-servlet-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="lombok" level="project" />
-    <orderEntry type="library" name="classmate-1.3.4" level="project" />
-    <orderEntry type="library" name="hibernate-validator-6.0.13.Final" level="project" />
-    <orderEntry type="library" name="javax.el-3.0.0" level="project" />
-    <orderEntry type="library" name="jboss-logging-3.3.2.Final" level="project" />
-    <orderEntry type="library" name="validation-api-2.0.1.Final" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

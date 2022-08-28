@@ -25,9 +25,16 @@ public class DirectMessage extends Entity {
 		this.adminSent = adminSent;
 	}
 
-	 
+	public DirectMessage(User from, User to, String text, boolean adminSent) {
+		super();
+		this.from = from;
+		this.to = to;
+		this.createdAt = LocalDateTime.now();
+		this.text = text;
+		this.adminSent = adminSent;
+	}
 
- 
+
 
 	public User getFrom() {
 		return from;
