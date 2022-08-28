@@ -50,6 +50,9 @@ public class WebApp {
             get("/images/:id", ImageController::getById);
             post("/users", UserController::registerNewUser);
             post("/posts", PostController::addPost);
+
+            get("/friendStatus/getAllFriendRequests", FriendStatusController::getAllFriendRequest);
+            get("/friendStatus/getAllPendingFriendRequestsThatISent", FriendStatusController::getAllFriendRequestThatUserSent);
             get("/friendStatus/:username", FriendStatusController::getFriendStatusForUsername);
             post("/friendStatus/sendRequestTo/:username", FriendStatusController::sendFriendRequest);
             delete("/friendStatus/removeFriend/:username", FriendStatusController::removeFriend);

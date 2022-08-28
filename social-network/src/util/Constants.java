@@ -14,4 +14,6 @@ public class Constants {
     public static final String FILE_FRIEND_REQUESTS_HEADER = "# id | from user id | to user id | createdAt";
     public static final String FILE_IMAGES_HEADER = "# id | name";
     public static final String FILE_DIRECT_MESSAGE_HEADER = "# id | from user id | to user id | text | createdAt | adminSent";
+
+    public static final String IMAGE_URL_PATH = "http://localhost:8081/images/";
 }

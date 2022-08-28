@@ -123,6 +123,10 @@ public class User extends Entity{
 		return friends;
 	}
 
+	public boolean hasProfileImage() {
+		return this.profileImage != null;
+	}
+
 	public void addNewPost(Post post) {
 		this.posts.add(post);
 	}

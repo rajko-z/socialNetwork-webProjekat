@@ -16,6 +16,9 @@ import spark.Response;
 import util.JWTUtils;
 import util.gson.GsonUtil;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static spark.Spark.halt;
 
 public class FriendStatusController {
@@ -75,6 +78,7 @@ public class FriendStatusController {
                 .gender(user.getGender())
                 .isBlocked(user.isBlocked())
                 .role(user.getRole())
+                .profileImageUrl(userService.getProfileImageUrlForUser(user))
                 .build();
     }
 
@@ -125,4 +129,39 @@ public class FriendStatusController {
         }
     }
 
+    // GET /friendStatus/getAllFriendRequests
+    public static Object getAllFriendRequest(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+        if (currentUser == null) {
+            halt(401, "Unauthorized");
+        }
+
+        List<FriendRequest> friendRequestList = friendStatusService.getFriendRequestsForUser(currentUser);
+        List<FriendRequestDTO> retVal = friendRequestList.stream().map(r ->
+                        FriendRequestDTO.builder()
+                            .from(convertUserToDto(r.getFrom()))
+                            .createdAt(r.getCreatedAt())
+                            .build())
+                        .collect(Collectors.toList());
+        Gson gson = GsonUtil.createGsonWithDateSupportAndExclusionStrategy("to");
+        return gson.toJson(retVal);
+    }
+
+    // GET /friendStatus/getAllPendingFriendRequestsThatISent
+    public static Object getAllFriendRequestThatUserSent(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+        if (currentUser == null) {
+            halt(401, "Unauthorized");
+        }
+
+        List<FriendRequest> friendRequestList = friendStatusService.getFriendRequestsThatUserSent(currentUser);
+        List<FriendRequestDTO> retVal = friendRequestList.stream().map(r ->
+                FriendRequestDTO.builder()
+                        .to(convertUserToDto(r.getTo()))
+                        .createdAt(r.getCreatedAt())
+                        .build())
+                .collect(Collectors.toList());
+        Gson gson = GsonUtil.createGsonWithDateSupportAndExclusionStrategy("from");
+        return gson.toJson(retVal);
+    }
 }

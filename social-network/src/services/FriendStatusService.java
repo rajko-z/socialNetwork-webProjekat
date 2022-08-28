@@ -9,6 +9,9 @@ import repository.FriendRequestRepository;
 import repository.RepoFactory;
 import util.Constants;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class FriendStatusService {
 
@@ -90,5 +93,17 @@ public class FriendStatusService {
         boolean isSuccess = this.friendRequestRepo.deleteRequest(from, to);
         if (!isSuccess)
             throw new InternalAppException("Error happened after accepting friend request");
+    }
+
+    public List<FriendRequest> getFriendRequestsForUser(User currentUser) {
+        return friendRequestRepo.getAll().stream().filter(
+                r -> r.getTo().getUsername().equals(currentUser.getUsername())
+        ).collect(Collectors.toList());
+    }
+
+    public List<FriendRequest> getFriendRequestsThatUserSent(User currentUser) {
+        return friendRequestRepo.getAll().stream().filter(
+                r -> r.getFrom().getUsername().equals(currentUser.getUsername())
+        ).collect(Collectors.toList());
     }
 }

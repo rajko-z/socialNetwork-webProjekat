@@ -45,4 +45,11 @@ public class UserService {
     }
 
 
+    public String getProfileImageUrlForUser(User user) {
+        if (user.hasProfileImage()) {
+            String imageName = user.getProfileImage().getImage().getName();
+            return Constants.IMAGE_URL_PATH + imageName;
+        }
+        return null;
+    }
 }
