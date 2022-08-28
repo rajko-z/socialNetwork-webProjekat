@@ -2,7 +2,6 @@ package controllers;
 
 import com.google.gson.Gson;
 import dto.FriendRequestDTO;
-import dto.UserDTO;
 import exceptions.BadRequestException;
 import exceptions.InternalAppException;
 import model.FriendRequest;
@@ -13,6 +12,7 @@ import services.FriendStatusService;
 import services.UserService;
 import spark.Request;
 import spark.Response;
+import util.DTOConverter;
 import util.JWTUtils;
 import util.gson.GsonUtil;
 
@@ -55,8 +55,8 @@ public class FriendStatusController {
         try {
             FriendRequest created =  friendStatusService.sendFriendRequest(currentUser, sendTo);
             FriendRequestDTO converted = FriendRequestDTO.builder()
-                    .from(convertUserToDto(currentUser))
-                    .to(convertUserToDto(sendTo))
+                    .from(DTOConverter.convertUserToDto(currentUser))
+                    .to(DTOConverter.convertUserToDto(sendTo))
                     .createdAt(created.getCreatedAt())
                     .build();
             Gson gson = GsonUtil.createGsonWithDateSupport();
@@ -68,19 +68,6 @@ public class FriendStatusController {
         }
     }
 
-    private static UserDTO convertUserToDto(User user) {
-        return UserDTO.builder()
-                .username(user.getUsername())
-                .name(user.getName())
-                .surname(user.getUsername())
-                .accountPrivate(user.isAccountPrivate())
-                .dateOfBirth(user.getDateOfBirth())
-                .gender(user.getGender())
-                .isBlocked(user.isBlocked())
-                .role(user.getRole())
-                .profileImageUrl(userService.getProfileImageUrlForUser(user))
-                .build();
-    }
 
 
     // DELETE  /friendStatus/removeFriend/:username
@@ -139,7 +126,7 @@ public class FriendStatusController {
         List<FriendRequest> friendRequestList = friendStatusService.getFriendRequestsForUser(currentUser);
         List<FriendRequestDTO> retVal = friendRequestList.stream().map(r ->
                         FriendRequestDTO.builder()
-                            .from(convertUserToDto(r.getFrom()))
+                            .from(DTOConverter.convertUserToDto(r.getFrom()))
                             .createdAt(r.getCreatedAt())
                             .build())
                         .collect(Collectors.toList());
@@ -157,7 +144,7 @@ public class FriendStatusController {
         List<FriendRequest> friendRequestList = friendStatusService.getFriendRequestsThatUserSent(currentUser);
         List<FriendRequestDTO> retVal = friendRequestList.stream().map(r ->
                 FriendRequestDTO.builder()
-                        .to(convertUserToDto(r.getTo()))
+                        .to(DTOConverter.convertUserToDto(r.getTo()))
                         .createdAt(r.getCreatedAt())
                         .build())
                 .collect(Collectors.toList());

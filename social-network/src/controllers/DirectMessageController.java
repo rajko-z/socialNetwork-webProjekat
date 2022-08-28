@@ -13,6 +13,7 @@ import services.DirectMessageService;
 import services.UserService;
 import spark.Request;
 import spark.Response;
+import util.DTOConverter;
 import util.JWTUtils;
 import util.gson.GsonUtil;
 
@@ -46,8 +47,8 @@ public class DirectMessageController {
             DirectMessage created  = directMessageService.sendDirectMessage(currentUser,sendTo,text);
 
             DirectMessageDTO converted = DirectMessageDTO.builder()
-                    .from(convertUserToDto(currentUser))
-                    .to(convertUserToDto(sendTo))
+                    .from(DTOConverter.convertUserToDto(currentUser))
+                    .to(DTOConverter.convertUserToDto(sendTo))
                     .createdAt(created.getCreatedAt())
                     .text(created.getText())
                     .adminSent(created.isAdminSent())
@@ -61,18 +62,7 @@ public class DirectMessageController {
         }
     }
 
-    private static UserDTO convertUserToDto(User user) {  // ova metoda je iz friendStatusControllera msm da bit trebalo prebaciti u dto klasu ili je po konvenciji da stoji u klasi kojoj se koristi nmp
-        return UserDTO.builder()
-                .username(user.getUsername())
-                .name(user.getName())
-                .surname(user.getUsername())
-                .accountPrivate(user.isAccountPrivate())
-                .dateOfBirth(user.getDateOfBirth())
-                .gender(user.getGender())
-                .isBlocked(user.isBlocked())
-                .role(user.getRole())
-                .build();
-    }
+
 
 
 }
