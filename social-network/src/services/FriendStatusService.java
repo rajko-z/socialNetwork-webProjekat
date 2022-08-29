@@ -9,7 +9,10 @@ import repository.FriendRequestRepository;
 import repository.RepoFactory;
 import util.Constants;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -105,5 +108,17 @@ public class FriendStatusService {
         return friendRequestRepo.getAll().stream().filter(
                 r -> r.getFrom().getUsername().equals(currentUser.getUsername())
         ).collect(Collectors.toList());
+    }
+
+    public List<User> getCommonFriendsForUsers(User currentUser, User user) {
+        List<User> retVal = new ArrayList<>();
+        Set<String> commonUsernames = new HashSet<>();
+        currentUser.getFriends().forEach(u -> commonUsernames.add(u.getUsername()));
+
+        for (User u : user.getFriends()) {
+            if (commonUsernames.contains(u.getUsername()))
+                retVal.add(u);
+        }
+        return retVal;
     }
 }

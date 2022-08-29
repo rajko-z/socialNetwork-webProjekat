@@ -2,6 +2,7 @@ package controllers;
 
 import com.google.gson.Gson;
 import dto.FriendRequestDTO;
+import dto.UserDTO;
 import exceptions.BadRequestException;
 import exceptions.InternalAppException;
 import model.FriendRequest;
@@ -149,6 +150,26 @@ public class FriendStatusController {
                         .build())
                 .collect(Collectors.toList());
         Gson gson = GsonUtil.createGsonWithDateSupportAndExclusionStrategy("from");
+        return gson.toJson(retVal);
+    }
+
+    public static Object getCommonFriends(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+        if (currentUser == null) {
+            halt(401, "Unauthorized");
+        }
+
+        User user = userService.getUserByUsername(req.params("username"));
+        if (user == null) {
+            res.status(400);
+            return "Bad Request. User with username: " + req.params("username") + " does not exist";
+        }
+
+        List<User> commonFriends = friendStatusService.getCommonFriendsForUsers(currentUser, user);
+        List<UserDTO> retVal = commonFriends.stream().
+                map(f -> DTOConverter.convertUserToDto(f)).collect(Collectors.toList());
+
+        Gson gson = GsonUtil.createGsonWithDateSupport();
         return gson.toJson(retVal);
     }
 }

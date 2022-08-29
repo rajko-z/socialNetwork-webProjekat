@@ -31,6 +31,7 @@ public class DTOConverter {
     public static List<CommentDTO> convertListOfCommentsToDTOs(List<Comment> comments) {
         return comments.stream().map(c ->
                     CommentDTO.builder()
+                            .id(c.getId())
                             .user(convertUserToDto(c.getUser()))
                             .createdAt(c.getCreatedAt())
                             .isDeleted(c.isDeleted())

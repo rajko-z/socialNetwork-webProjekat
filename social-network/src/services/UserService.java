@@ -94,8 +94,4 @@ public class UserService {
         foundUser.setPassword(c.getNewPassword());
         userRepository.saveData(Constants.FILE_USERS_HEADER);
     }
-
-    public void getAllPostsWithCommentsForUser(User user) {
-
-    }
 }

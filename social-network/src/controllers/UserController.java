@@ -176,6 +176,7 @@ public class UserController {
         List<PostDTOWithoutUser> retVal =
                 posts.stream().map( p ->
                         PostDTOWithoutUser.builder()
+                            .id(p.getId())
                             .imageUrl(postService.getImageUrlForPost(p))
                             .createdAt(p.getCreatedAt())
                             .text(p.getText())
@@ -201,4 +202,6 @@ public class UserController {
             return userService.getPostsFromUserByPostType(user, PostType.REGULAR_POST);
         return retVal;
     }
+
+
 }

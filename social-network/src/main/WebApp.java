@@ -61,6 +61,7 @@ public class WebApp {
             get("/users/:username", UserController::getUserByUsername);
             post("/posts", PostController::addPost);
 
+            get("/friendStatus/getCommonFriends/:username", FriendStatusController::getCommonFriends);
             get("/friendStatus/getAllFriendRequests", FriendStatusController::getAllFriendRequest);
             get("/friendStatus/getAllPendingFriendRequestsThatISent", FriendStatusController::getAllFriendRequestThatUserSent);
             get("/friendStatus/:username", FriendStatusController::getFriendStatusForUsername);
