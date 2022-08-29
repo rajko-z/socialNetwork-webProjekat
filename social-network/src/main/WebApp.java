@@ -51,14 +51,13 @@ public class WebApp {
             put("/users", UserController::updateUser);
             put("/users/changePassword", UserController::changePassword);
 
-            /*
-            /users/getPostsWithComments/:username?postType={all|regular|image}
-            * */
+            // users/getPostsWithComments/:username?postType={all|regular|image}
             get("/users/getPostsWithComments/:username", UserController::getPostsWithCommentsForUsername);
 
+            get("/users/getFeed", UserController::getFeed);
             get("/users/:username", UserController::getUserByUsername);
             post("/posts", PostController::addPost);
-
+            get("/friendStatus/getFriends", FriendStatusController::getFriends);
             get("/friendStatus/getCommonFriends/:username", FriendStatusController::getCommonFriends);
             get("/friendStatus/getAllFriendRequests", FriendStatusController::getAllFriendRequest);
             get("/friendStatus/getAllPendingFriendRequestsThatISent", FriendStatusController::getAllFriendRequestThatUserSent);

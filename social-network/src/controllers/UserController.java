@@ -2,6 +2,11 @@ package controllers;
 
 import com.google.gson.Gson;
 import dto.*;
+import dto.comment.CommentDTO;
+import dto.post.PostDTOWithUser;
+import dto.post.PostDTOWithoutUser;
+import dto.user.NewUserDTO;
+import dto.user.UpdatedUserDTO;
 import exceptions.BadRequestException;
 import model.FriendStatus;
 import model.Post;
@@ -204,4 +209,15 @@ public class UserController {
     }
 
 
+    public static Object getFeed(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+        if (currentUser == null) {
+            halt(401, "Unauthorized");
+        }
+
+        List<PostDTOWithUser> feedPosts = userService.getFeedPostsForUser(currentUser);
+
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        return gson.toJson(feedPosts);
+    }
 }

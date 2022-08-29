@@ -1,6 +1,7 @@
 package dto;
 
 
+import dto.user.UserDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;

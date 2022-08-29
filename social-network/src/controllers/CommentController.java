@@ -1,19 +1,14 @@
 package controllers;
 
 import com.google.gson.Gson;
-import dto.CommentDTO;
-import dto.NewCommentDTO;
-import dto.NewPostDTO;
-import dto.UpdatedCommentDTO;
+import dto.comment.CommentDTO;
+import dto.comment.NewCommentDTO;
+import dto.comment.UpdatedCommentDTO;
 import exceptions.BadRequestException;
 import exceptions.ForbiddenAccessException;
-import exceptions.InternalAppException;
 import model.Comment;
-import model.Post;
 import model.User;
-import repository.RepoFactory;
 import services.CommentService;
-import services.PostService;
 import spark.Request;
 import spark.Response;
 import util.DTOConverter;

@@ -1,9 +1,7 @@
 package services;
 
-import com.google.gson.Gson;
-import dto.CommentDTO;
-import dto.NewCommentDTO;
-import dto.UpdatedCommentDTO;
+import dto.comment.NewCommentDTO;
+import dto.comment.UpdatedCommentDTO;
 import exceptions.BadRequestException;
 import exceptions.ForbiddenAccessException;
 import model.Comment;
@@ -13,8 +11,6 @@ import model.User;
 import repository.CommentRepository;
 import repository.RepoFactory;
 import util.Constants;
-import util.DTOConverter;
-import util.gson.GsonUtil;
 import validation.ValidationService;
 
 import java.time.LocalDateTime;

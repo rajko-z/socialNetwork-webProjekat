@@ -1,7 +1,5 @@
 package validation;
 
-import dto.NewUserDTO;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;

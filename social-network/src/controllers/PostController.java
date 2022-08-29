@@ -1,8 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import dto.NewPostDTO;
+import dto.post.NewPostDTO;
 import exceptions.BadRequestException;
 import exceptions.InternalAppException;
 import model.User;
@@ -11,7 +10,6 @@ import services.PostService;
 import spark.Request;
 import spark.Response;
 import util.JWTUtils;
-import util.gson.AttributeExclusionStrategy;
 import util.gson.GsonUtil;
 
 import static spark.Spark.halt;

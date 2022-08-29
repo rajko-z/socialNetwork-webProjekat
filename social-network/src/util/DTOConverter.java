@@ -1,7 +1,7 @@
 package util;
 
-import dto.CommentDTO;
-import dto.UserDTO;
+import dto.comment.CommentDTO;
+import dto.user.UserDTO;
 import model.Comment;
 import model.User;
 import repository.RepoFactory;

@@ -2,11 +2,8 @@ package controllers;
 
 import com.google.gson.Gson;
 import dto.DirectMessageDTO;
-import dto.FriendRequestDTO;
-import dto.UserDTO;
 import exceptions.BadRequestException;
 import model.DirectMessage;
-import model.FriendRequest;
 import model.User;
 import repository.RepoFactory;
 import services.DirectMessageService;

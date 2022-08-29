@@ -1,4 +1,4 @@
-package dto;
+package dto.user;
 
 import lombok.*;
 import model.Gender;
@@ -15,14 +15,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @ToString
-public class NewUserDTO {
+public class UpdatedUserDTO {
     @NotEmpty(message = "Username should not be empty")
     @Size(min=2, max=50, message = "Username should be between 2 and 50 chars")
     private String username;
-
-    @NotEmpty
-    @Size(min=3, max=250, message = "Password should be between 3 and 250 chars")
-    private String password;
 
     @NotEmpty(message = "Name should not be empty")
     @Size(min=2, max=50, message = "Name should be between 2 and 50 chars")

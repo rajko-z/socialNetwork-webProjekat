@@ -1,27 +1,38 @@
 package services;
 
 import dto.ChangePasswordRequestDTO;
-import dto.NewUserDTO;
-import dto.UpdatedUserDTO;
+import dto.comment.CommentDTO;
+import dto.post.PostDTOWithUser;
+import dto.post.PostDTOWithoutUser;
+import dto.user.NewUserDTO;
+import dto.user.UpdatedUserDTO;
 import exceptions.BadRequestException;
 import model.Post;
 import model.PostType;
 import model.Role;
 import model.User;
+import repository.RepoFactory;
 import repository.UserRepository;
 import util.Constants;
+import util.DTOConverter;
 import validation.ValidationService;
 
+import java.awt.image.ConvolveOp;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
     private final ValidationService validationService;
+    private final PostService postService;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.validationService = new ValidationService();
+        this.postService = new PostService(RepoFactory.postRepo);
+
     }
 
     public void registerNewUser(NewUserDTO newUserDTO) {
@@ -93,5 +104,32 @@ public class UserService {
 
         foundUser.setPassword(c.getNewPassword());
         userRepository.saveData(Constants.FILE_USERS_HEADER);
+    }
+
+    public List<PostDTOWithUser> getFeedPostsForUser(User currentUser) {
+        List<PostDTOWithUser> feedPosts = new ArrayList<>();
+
+        for (User friend: currentUser.getFriends()) {
+            for (Post p : friend.getUndeletedPosts()) {
+
+                PostDTOWithUser postDTOWithUser = PostDTOWithUser.builder()
+                        .user(DTOConverter.convertUserToDto(friend))
+                        .createdAt(p.getCreatedAt())
+                        .text(p.getText())
+                        .id(p.getId())
+                        .imageUrl(postService.getImageUrlForPost(p))
+                        .isDeleted(p.isDeleted())
+                        .type(p.getType())
+                        .comments(DTOConverter.convertListOfCommentsToDTOs(p.getUndeletedComments())
+                                .stream()
+                                .sorted(Comparator.comparing(CommentDTO::getCreatedAt))
+                                .collect(Collectors.toList()))
+                        .build();
+
+                feedPosts.add(postDTOWithUser);
+            }
+        }
+        feedPosts.sort(Comparator.comparing(PostDTOWithUser::getCreatedAt));
+        return feedPosts;
     }
 }

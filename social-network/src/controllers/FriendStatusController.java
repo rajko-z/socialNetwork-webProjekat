@@ -2,7 +2,7 @@ package controllers;
 
 import com.google.gson.Gson;
 import dto.FriendRequestDTO;
-import dto.UserDTO;
+import dto.user.UserDTO;
 import exceptions.BadRequestException;
 import exceptions.InternalAppException;
 import model.FriendRequest;
@@ -170,6 +170,20 @@ public class FriendStatusController {
                 map(f -> DTOConverter.convertUserToDto(f)).collect(Collectors.toList());
 
         Gson gson = GsonUtil.createGsonWithDateSupport();
+        return gson.toJson(retVal);
+    }
+
+    public static Object getFriends(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+        if (currentUser == null) {
+            halt(401, "Unauthorized");
+        }
+
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        List<UserDTO> retVal = currentUser.getFriends().stream()
+                .map(DTOConverter::convertUserToDto)
+                .collect(Collectors.toList());
+
         return gson.toJson(retVal);
     }
 }

@@ -1,6 +1,6 @@
 package services;
 
-import dto.NewPostDTO;
+import dto.post.NewPostDTO;
 import exceptions.BadRequestException;
 import exceptions.InternalAppException;
 import model.Image;
