@@ -24,7 +24,16 @@ public class Comment extends Entity {
 		this.user = user;
 		this.isDeleted = isDeleted;
 	}
-	
+
+	public Comment(String text, User user) {
+		this.text = text;
+		this.user = user;
+		this.createdAt = LocalDateTime.now();
+		this.modifiedAt = null;
+		this.isDeleted = false;
+	}
+
+
 	public boolean isDeleted() {
 		return isDeleted;
 	}
@@ -43,6 +52,26 @@ public class Comment extends Entity {
 
 	public User getUser() {
 		return user;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setModifiedAt(LocalDateTime modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setDeleted(boolean deleted) {
+		isDeleted = deleted;
 	}
 
 	@Override

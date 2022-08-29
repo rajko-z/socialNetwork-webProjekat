@@ -29,3 +29,4 @@
 28|8|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
 29|7|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
 30|5|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
+31|3|Updatovan komentar|2022-08-29 19:37:51|2022-08-29 19:52:17|true

@@ -75,6 +75,10 @@ public class Post extends Entity{
 		this.image = image;
 	}
 
+	public void addComment(Comment comment) {
+		this.comments.add(comment);
+	}
+
 	@Override
 	public String formatEntityForFile() {
 		

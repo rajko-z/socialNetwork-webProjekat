@@ -101,4 +101,18 @@ public class PostService {
         }
         return null;
     }
+
+    public Post getById(Long id) {
+        return this.postRepository.getById(id);
+    }
+
+    public User getUserFromPost(Long postId) {
+        for (User u : RepoFactory.userRepo.getAll()) {
+            for (Post p : u.getPosts()) {
+                if (p.getId().equals(postId))
+                    return u;
+            }
+        }
+        return null;
+    }
 }

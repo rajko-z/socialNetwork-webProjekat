@@ -18,7 +18,7 @@
 17|R|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|13|false
 18|R|ovo jfdsfdsfdsfdf d dfd e moj novi post1|30|2022-08-20 15:00:10|null|false
 19|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|null|2022-08-20 15:00:10|11|false
-20|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|null|2022-08-20 15:00:10|12|false
+20|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|31|2022-08-20 15:00:10|12|false
 21|I|ovo je moj novi post1|16,17|2022-08-20 15:00:10|13|false
 22|I|ovo je moj nsrere rovi post2|18,19|2022-08-20 15:00:10|13|false
 23|R|ovo je moj novi posreret3re|20|2022-08-20 15:00:10|null|false
