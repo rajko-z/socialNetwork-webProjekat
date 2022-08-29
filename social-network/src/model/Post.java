@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import util.CSVFormatUtil;
 import util.DateUtil;
@@ -41,6 +42,8 @@ public class Post extends Entity{
 		return isDeleted;
 	}
 
+	public boolean containsImage() { return image != null; }
+
 	public String getText() {
 		return text;
 	}
@@ -51,6 +54,10 @@ public class Post extends Entity{
 
 	public List<Comment> getComments() {
 		return comments;
+	}
+
+	public List<Comment> getUndeletedComments() {
+		return this.comments.stream().filter(c -> !c.isDeleted()).collect(Collectors.toList());
 	}
 
 	public LocalDateTime getCreatedAt() {

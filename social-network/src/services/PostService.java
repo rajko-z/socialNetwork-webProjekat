@@ -94,4 +94,11 @@ public class PostService {
         return addedPost;
     }
 
+    public String getImageUrlForPost(Post post) {
+        if (post.containsImage()) {
+            String imageName = post.getImage().getName();
+            return Constants.IMAGE_URL_PATH + imageName;
+        }
+        return null;
+    }
 }

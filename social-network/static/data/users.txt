@@ -6,9 +6,9 @@
 5|elisa|123|Elisa|Elisis|2000-04-22|F|false|false|R|3|18,19,20|4,3,7,8
 6|elizabeth|123|Elizabeth|Elizis|2000-04-22|F|true|false|R|4|21|4,3
 7|julia|123|Julia|Julis|2000-04-22|F|true|false|R|5|22,23|3,5,12
-8|david|123|David|Davidis|2000-04-22|F|true|false|R|6|24|3,5
-9|huan|123|Huan|Huanis|2000-04-22|F|false|false|R|7|null|null
-10|mike|123|Mike|Mikes|2000-04-22|F|false|false|R|8|25,26,27|11
-11|nigson|123|Nigson|Neks|2000-04-22|F|false|false|R|9|28,10,29|10
-12|peter|123|Peter|Piters|2000-04-22|F|false|false|R|null|30|7
+8|david|123|David|Davidis|2000-04-22|M|true|false|R|6|24|3,5
+9|huan|123|Huan|Huanis|2000-04-22|M|false|false|R|7|null|null
+10|mike|123|Mike|Mikes|2000-04-22|M|true|false|R|8|25,26,27|11
+11|nigson|123|Nigson|Neks|2000-04-22|M|false|false|R|9|28,10,29|10
+12|peter|123|Peter|Piters|2000-04-22|M|false|false|R|null|30|7
 13|bojan|123|Bojan|Vasic|2001-01-03|M|false|false|R|null|null|null

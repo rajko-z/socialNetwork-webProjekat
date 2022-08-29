@@ -4,11 +4,16 @@ import dto.ChangePasswordRequestDTO;
 import dto.NewUserDTO;
 import dto.UpdatedUserDTO;
 import exceptions.BadRequestException;
+import model.Post;
+import model.PostType;
 import model.Role;
 import model.User;
 import repository.UserRepository;
 import util.Constants;
 import validation.ValidationService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
@@ -55,6 +60,11 @@ public class UserService {
         return null;
     }
 
+    public List<Post> getPostsFromUserByPostType(User user, PostType postType) {
+        return user.getUndeletedPosts().stream()
+                .filter(p -> p.getType().equals(postType)).collect(Collectors.toList());
+    }
+
     public User updateUser(UpdatedUserDTO u) {
         String errorMsg = validationService.validateAndGetErrorMessage(u);
         if (errorMsg != null) {
@@ -83,5 +93,9 @@ public class UserService {
 
         foundUser.setPassword(c.getNewPassword());
         userRepository.saveData(Constants.FILE_USERS_HEADER);
+    }
+
+    public void getAllPostsWithCommentsForUser(User user) {
+
     }
 }

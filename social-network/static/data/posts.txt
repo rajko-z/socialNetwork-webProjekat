@@ -1,31 +1,31 @@
 # id | type of post(IMAGE, REGULAR, PROFILE) | text | list of comments ids | createdAt | imageId | isDeleted
 1|P|ovo je moj novi post1|1,2,3|2022-08-20 15:00:10|6|false
-2|P|ovo je moj nsrere rovi post2|4|2022-08-20 15:00:10|6|false
-3|P|ovo je moj novi posreret3re|null|2022-08-20 15:00:10|6|false
-4|P|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|6|false
-5|P|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|6|false
-6|P|ovo je fds fds fds fdsmoj novi post6|5,6|2022-08-20 15:00:10|6|false
-7|P|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|6|false
-8|P|ovo jfdsfdsfdsfdf d dfd e moj novi post1|null|2022-08-20 15:00:10|6|false
-9|P|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|7,8|2022-08-20 15:00:10|6|false
-10|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|9,10,11|2022-08-20 15:00:10|6|false
-11|I|ovo je moj novi post1|null|2022-08-20 15:00:10|6|false
-12|I|ovo je moj nsrere rovi post2|null|2022-08-20 15:00:10|6|false
-13|P|ovo je moj novi posreret3re|12,13,14,15|2022-08-20 15:00:10|6|false
-14|P|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|null|false
-15|P|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|6|false
-16|P|ovo je fds fds fds fdsmoj novi post6|null|2022-08-20 15:00:10|6|false
-17|P|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|6|false
-18|P|ovo jfdsfdsfdsfdf d dfd e moj novi post1|30|2022-08-20 15:00:10|null|false
-19|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|null|2022-08-20 15:00:10|6|false
-20|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|null|2022-08-20 15:00:10|6|false
-21|I|ovo je moj novi post1|16,17|2022-08-20 15:00:10|6|false
-22|I|ovo je moj nsrere rovi post2|18,19|2022-08-20 15:00:10|6|false
-23|P|ovo je moj novi posreret3re|20|2022-08-20 15:00:10|null|false
-24|P|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|6|false
-25|P|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|null|false
-26|P|ovo je fds fds fds fdsmoj novi post6|null|2022-08-20 15:00:10|null|false
-27|P|ovo je moj gfhghgfhgf hgf hgfhnovi post1|21,22|2022-08-20 15:00:10|6|false
-28|P|ovo jfdsfdsfdsfdf d dfd e moj novi post1|23,24|2022-08-20 15:00:10|6|false
-29|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|25|2022-08-20 15:00:10|6|false
-30|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|26,27,28,29|2022-08-20 15:00:10|6|false
+2|P|ovo je moj nsrere rovi post2|4|2022-08-20 15:00:10|10|false
+3|P|ovo je moj novi posreret3re|null|2022-08-20 15:00:10|2|false
+4|P|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|3|false
+5|P|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|5|false
+6|P|ovo je fds fds fds fdsmoj novi post6|5,6|2022-08-20 15:00:10|1|false
+7|P|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|4|false
+8|P|ovo jfdsfdsfdsfdf d dfd e moj novi post1|null|2022-08-20 15:00:10|7|false
+9|P|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|7,8|2022-08-20 15:00:10|8|false
+10|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|9,10,11|2022-08-20 15:00:10|11|false
+11|I|ovo je moj novi post1|null|2022-08-20 15:00:10|12|false
+12|I|ovo je moj nsrere rovi post2|null|2022-08-20 15:00:10|13|false
+13|R|ovo je moj novi posreret3re|12,13,14,15|2022-08-20 15:00:10|11|false
+14|R|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|null|false
+15|R|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|12|false
+16|R|ovo je fds fds fds fdsmoj novi post6|null|2022-08-20 15:00:10|null|false
+17|R|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|13|false
+18|R|ovo jfdsfdsfdsfdf d dfd e moj novi post1|30|2022-08-20 15:00:10|null|false
+19|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|null|2022-08-20 15:00:10|11|false
+20|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|null|2022-08-20 15:00:10|12|false
+21|I|ovo je moj novi post1|16,17|2022-08-20 15:00:10|13|false
+22|I|ovo je moj nsrere rovi post2|18,19|2022-08-20 15:00:10|13|false
+23|R|ovo je moj novi posreret3re|20|2022-08-20 15:00:10|null|false
+24|R|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|13|false
+25|R|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|null|false
+26|R|ovo je fds fds fds fdsmoj novi post6|null|2022-08-20 15:00:10|null|false
+27|R|ovo je moj gfhghgfhgf hgf hgfhnovi post1|21,22|2022-08-20 15:00:10|12|false
+28|R|ovo jfdsfdsfdsfdf d dfd e moj novi post1|23,24|2022-08-20 15:00:10|13|false
+29|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|25|2022-08-20 15:00:11|12|false
+30|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|26,27,28,29|2022-08-20 15:00:10|12|false

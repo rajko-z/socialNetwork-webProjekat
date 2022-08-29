@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import util.CSVFormatUtil;
 
@@ -102,6 +103,10 @@ public class User extends Entity{
 
 	public List<Post> getPosts() {
 		return posts;
+	}
+
+	public List<Post> getUndeletedPosts() {
+		return posts.stream().filter(p -> !p.isDeleted()).collect(Collectors.toList());
 	}
 
 	public void setProfileImage(Post profileImage) {

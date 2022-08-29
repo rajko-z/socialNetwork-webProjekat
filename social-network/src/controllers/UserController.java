@@ -1,12 +1,15 @@
 package controllers;
 
 import com.google.gson.Gson;
-import dto.ChangePasswordRequestDTO;
-import dto.NewUserDTO;
-import dto.UpdatedUserDTO;
+import dto.*;
 import exceptions.BadRequestException;
+import model.FriendStatus;
+import model.Post;
+import model.PostType;
 import model.User;
 import repository.RepoFactory;
+import services.FriendStatusService;
+import services.PostService;
 import services.UserService;
 import spark.Request;
 import spark.Response;
@@ -14,12 +17,18 @@ import util.DTOConverter;
 import util.JWTUtils;
 import util.gson.GsonUtil;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static spark.Spark.halt;
 
 
 public class UserController {
 
     private static final UserService userService = new UserService(RepoFactory.userRepo);
+    private static final FriendStatusService friendStatusService = new FriendStatusService();
+    private static final PostService postService = new PostService(RepoFactory.postRepo);
 
     // POST api/users
     public static Object registerNewUser(Request req, Response res) {
@@ -121,6 +130,75 @@ public class UserController {
             res.status(400);
             return e.getMessage();
         }
+    }
 
+    // GET /users/:username
+    public static Object getUserByUsername(Request req, Response res) {
+        String username = req.params("username");
+        User user = userService.getUserByUsername(username);
+        if (user == null) {
+            res.status(404);
+            return "User with username: " + username + " not found.";
+        }
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        return gson.toJson(DTOConverter.convertUserToDto(user));
+    }
+
+
+    // GET /users/getPostsWithComments/:username?postType=all|image|regular
+    public static Object getPostsWithCommentsForUsername(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+
+        String username = req.params("username");
+        User user = userService.getUserByUsername(username);
+        if (user == null) {
+            res.status(404);
+            return "User with username: " + username + " not found.";
+        }
+
+        if (user.isAccountPrivate()) {
+            if (currentUser == null) {
+                halt(401, "Unauthorized");
+            } else {
+                FriendStatus friendStatus = friendStatusService.getFriendStatusBetweenUsers(currentUser, user);
+                if (!friendStatus.equals(FriendStatus.FRIENDS)) {
+                    res.status(403);
+                    return "Forbidden. You have to be friend with " + username + " to see users posts";
+                }
+            }
+        }
+
+        String typeParam = req.queryParams("postType");
+        if (typeParam == null)
+            typeParam = "all";
+        List<Post> posts = filterPostsForUserByTypeParam(user, typeParam);
+
+        List<PostDTOWithoutUser> retVal =
+                posts.stream().map( p ->
+                        PostDTOWithoutUser.builder()
+                            .imageUrl(postService.getImageUrlForPost(p))
+                            .createdAt(p.getCreatedAt())
+                            .text(p.getText())
+                            .type(p.getType())
+                            .comments(DTOConverter.convertListOfCommentsToDTOs(p.getUndeletedComments())
+                                    .stream()
+                                    .sorted(Comparator.comparing(CommentDTO::getCreatedAt))
+                                    .collect(Collectors.toList()))
+                            .build()
+                    )
+                    .sorted(Comparator.comparing(PostDTOWithoutUser::getCreatedAt))
+                    .collect(Collectors.toList());
+
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        return gson.toJson(retVal);
+    }
+
+    private static List<Post> filterPostsForUserByTypeParam(User user, String postType) {
+        List<Post> retVal = user.getUndeletedPosts();
+        if (postType.equals("image"))
+            return userService.getPostsFromUserByPostType(user, PostType.IMAGE_POST);
+        if (postType.equals("regular"))
+            return userService.getPostsFromUserByPostType(user, PostType.REGULAR_POST);
+        return retVal;
     }
 }
