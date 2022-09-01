@@ -37,7 +37,9 @@ public class Post extends Entity{
 		this.createdAt = createdAt;
 		this.isDeleted = isDeleted;
 	}
-
+	public void setDeleted(boolean deleted){
+		this.isDeleted=deleted;
+	}
 	public boolean isDeleted() {
 		return isDeleted;
 	}

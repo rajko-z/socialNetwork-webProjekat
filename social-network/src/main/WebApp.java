@@ -69,6 +69,7 @@ public class WebApp {
             post("/comments", CommentController::createComment);
             put("/comments", CommentController::updateComment);
             delete("/comments/:id",CommentController::deleteComment);
+            delete("posts/:id",PostController::deletePost);
 
         });
 

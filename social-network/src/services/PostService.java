@@ -2,11 +2,9 @@ package services;
 
 import dto.post.NewPostDTO;
 import exceptions.BadRequestException;
+import exceptions.ForbiddenAccessException;
 import exceptions.InternalAppException;
-import model.Image;
-import model.Post;
-import model.PostType;
-import model.User;
+import model.*;
 import repository.PostRepository;
 import repository.RepoFactory;
 import util.Constants;
@@ -17,11 +15,14 @@ import java.time.LocalDateTime;
 public class PostService {
     private final PostRepository postRepository;
     private final ImageService imageService;
+
+    private final UserService userService;
     private final ValidationService validationService;
 
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
         this.validationService = new ValidationService();
+        this.userService = new UserService(RepoFactory.userRepo);
         this.imageService = new ImageService(RepoFactory.imageRepo);
     }
 
@@ -115,4 +116,27 @@ public class PostService {
         }
         return null;
     }
+
+
+    public void deletePostById(long postId, User user) {
+        Post post = this.postRepository.getById(postId);
+
+        if (post == null) {
+            throw new BadRequestException("Can't find post with id: " + postId);
+        }
+
+        if(!this.userService.isUsersPost(user,postId))
+        {
+            throw new ForbiddenAccessException("Can't delete post from other user.");
+        }
+
+        post.setDeleted(true);
+        postRepository.saveData(Constants.FILE_POSTS_HEADER);
+    }
+
+
+
+
+
+
 }

@@ -76,6 +76,11 @@ public class UserService {
                 .filter(p -> p.getType().equals(postType)).collect(Collectors.toList());
     }
 
+    public boolean isUsersPost(User user, long idPost){
+        Post post = postService.getById(idPost);
+        return user.getUndeletedPosts().contains(post);
+    }
+
     public User updateUser(UpdatedUserDTO u) {
         String errorMsg = validationService.validateAndGetErrorMessage(u);
         if (errorMsg != null) {
