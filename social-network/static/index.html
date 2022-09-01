@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Social Network</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="css/toast.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<div id="socialNetwork">
+
+    <div class="wrapper d-flex align-items-stretch" >
+        <nav v-if="loggedUser != null && loggedUser.role==='REGULAR'" id="sidebar" class="active sidebar">
+            <h6><a href="index.html" class="logo">{{loggedUser.username}}</a></h6>
+            <label> --role--regular</label>
+            <hr>
+            <ul class="list-unsettled components mb-5">
+                <li class="active">
+                    <a href="#"><span class="fa fa-home"></span> Home</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-user"></span> My Profile</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-edit"></span>Edit Profile</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-user-plus"></span>Friend Requests</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-search"></span>Find Users</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
+                </li>
+                <li>
+                    <a href="#" v-on:click="logOut()"><span class="fa fa-sign-out"></span> Log out</a>
+                </li>
+            </ul>
+        </nav>
+        <nav v-else-if="loggedUser != null && loggedUser.role==='ADMIN'" id="sidebar" class="active sidebar">
+            <h6><a href="index.html" class="logo">{{loggedUser.username}}</a></h6>
+            <label>--role--admin</label>
+            <hr>
+            <ul class="list-unsettled components mb-5">
+                <li class="active">
+                    <a href="#"><span class="fa fa-home"></span> Home</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-user"></span> My Profile</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-edit"></span>Edit Profile</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-search"></span>Find Users</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
+                </li>
+                <li>
+                    <a href="#" v-on:click="logOut()"><span class="fa fa-sign-out"></span> Log out</a>
+                </li>
+            </ul>
+        </nav>
+        <nav v-else id="sidebar" class="active sidebar">
+            <h6><a href="index.html" class="logo">Guest</a></h6>
+            <hr/>
+            <ul class="list-unsettled components mb-5">
+                <li>
+                    <a href="#"><span class="fa fa-user-plus"></span>Register</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-search"></span>Find Users</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content" class="p-4 p-md-5 content">
+            <router-view></router-view>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- libraries-->
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script src="js/axios.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/toast.js"></script>
+
+<!--helper shared js functions -->
+<script src="app/common/api.js"></script>
+<script src="app/common/auth.js"></script>
+
+<!-- components -->
+<script src="app/homePageRegular.js"></script>
+<script src="app/homePageAdmin.js"></script>
+<script src="app/homePageGuest.js"></script>
+<script src="app/login.js"></script>
+<script src="app/register.js"></script>
+<script src="app/app.js"></script>
+
+
+
+</body>
+</html>
