@@ -9,9 +9,9 @@
 8|P|ovo jfdsfdsfdsfdf d dfd e moj novi post1|null|2022-08-20 15:00:10|7|false
 9|P|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|7,8|2022-08-20 15:00:10|8|false
 10|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|9,10,11|2022-08-20 15:00:10|11|false
-11|I|ovo je moj novi post1|null|2022-08-20 15:00:10|12|false
+11|I|ovo je moj novi post1|null|2022-08-20 15:00:10|12|true
 12|I|ovo je moj nsrere rovi post2|null|2022-08-20 15:00:10|13|false
-13|R|ovo je moj novi posreret3re|12,13,14,15|2022-08-20 15:00:10|11|false
+13|R|ovo je moj novi posreret3re|12,13,14,15|2022-08-20 15:00:10|11|true
 14|R|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|null|false
 15|R|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|12|false
 16|R|ovo je fds fds fds fdsmoj novi post6|null|2022-08-20 15:00:10|null|false

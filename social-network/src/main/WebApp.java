@@ -66,10 +66,12 @@ public class WebApp {
             delete("/friendStatus/removeFriend/:username", FriendStatusController::removeFriend);
             put("/friendStatus/acceptRequest/:username", FriendStatusController::acceptRequest);
             post("/sendMessageTo/:username/:text", DirectMessageController::sendDirectMessage);
+            post("/sendMessageTo", DirectMessageController::sendDirectMessage);
             post("/comments", CommentController::createComment);
             put("/comments", CommentController::updateComment);
             delete("/comments/:id",CommentController::deleteComment);
             delete("posts/:id",PostController::deletePost);
+            delete("/posts/:id",PostController::deletePost);
 
         });
 
