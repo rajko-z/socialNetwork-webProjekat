@@ -1,7 +1,9 @@
 package controllers;
 
 import com.google.gson.Gson;
-import dto.DirectMessageDTO;
+import dto.comment.NewCommentDTO;
+import dto.message.DirectMessageDTO;
+import dto.message.NewMessageDTO;
 import exceptions.BadRequestException;
 import model.DirectMessage;
 import model.User;
@@ -29,12 +31,27 @@ public class DirectMessageController {
         if (currentUser == null) {
             halt(401, "Unauthorized");
         }
-        User sendTo = userService.getUserByUsername(req.params("username"));
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        String payload = req.body();
+        NewMessageDTO newMessageDTO;
+
+        try {
+            newMessageDTO = gson.fromJson(payload, NewMessageDTO.class);
+            if (newMessageDTO == null) {
+                res.status(400);
+                return "Bad message request";
+            }
+        } catch (Exception e) {
+            res.status(400);
+            return "Bad message request";
+        }
+
+        User sendTo = userService.getUserByUsername(newMessageDTO.getUsername());
         if (sendTo == null) {
             res.status(400);
             return "Bad Request. User with this username does not exist";
         }
-        String text = req.params("text");
+        String text = newMessageDTO.getText();
         if (text.trim().equals("")) {     // ne moze poslati praznu poruku ili samo space-ove (ovo vrv nece biti ovako kasnije)
             res.status(400);
             return "Bad Request. Message is empty.";
@@ -50,7 +67,7 @@ public class DirectMessageController {
                     .text(created.getText())
                     .adminSent(created.isAdminSent())
                     .build();
-            Gson gson = GsonUtil.createGsonWithDateSupport();
+
             return gson.toJson(converted);
         }
         catch (BadRequestException e) {

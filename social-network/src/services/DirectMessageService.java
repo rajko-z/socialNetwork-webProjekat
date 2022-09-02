@@ -23,7 +23,7 @@ public class DirectMessageService {
 
         boolean adminSent = from.getRole().equals(Role.ADMIN);     //
         DirectMessage created = this.directMessageRepository.add(new DirectMessage(from ,to,text,adminSent));
-        directMessageRepository.saveData(Constants.FILE_FRIEND_REQUESTS_HEADER);
+        directMessageRepository.saveData(Constants.FILE_DIRECT_MESSAGE_HEADER);
         return created;
     }
 

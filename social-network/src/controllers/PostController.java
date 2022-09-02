@@ -3,6 +3,7 @@ package controllers;
 import com.google.gson.Gson;
 import dto.post.NewPostDTO;
 import exceptions.BadRequestException;
+import exceptions.ForbiddenAccessException;
 import exceptions.InternalAppException;
 import model.User;
 import repository.RepoFactory;
@@ -13,6 +14,7 @@ import util.JWTUtils;
 import util.gson.GsonUtil;
 
 import static spark.Spark.halt;
+import static spark.Spark.post;
 
 public class PostController  {
 
@@ -52,4 +54,31 @@ public class PostController  {
         }
 
     }
+
+    public static Object deletePost(Request req, Response res) {
+        User user = JWTUtils.getUserIfLoggedIn(req);
+        if (user == null) {
+            halt(401, "Unauthorized");
+        }
+        long postId;
+        try {
+            postId = Long.parseLong(req.params("id"));
+        } catch (NumberFormatException e) {
+            res.status(400);
+            return "Bad request. Post id should be number.";
+        }
+
+        try {
+            postService.deletePostById(postId, user);
+            return "Successfully deleted post.";
+        } catch (BadRequestException e) {
+            res.status(400);
+            return e.getMessage();
+        } catch (ForbiddenAccessException e) {
+            res.status(403);
+            return e.getMessage();
+        }
+    }
+
+
 }
