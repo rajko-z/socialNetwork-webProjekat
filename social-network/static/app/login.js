@@ -71,7 +71,7 @@ Vue.component("login", {
                     <input v-on:click="login($event)" type="submit" class="login-btnSubmit" value="Login" />
                 </div>
                 <div class="form-group" v-if="errorVisible">
-                    <label class="login-errorMessage">Bad credentials.</label>
+                    <label class="errorMessage">Bad credentials.</label>
                 </div>
                 
                 <div class="form-group">
@@ -86,5 +86,6 @@ Vue.component("login", {
     </div>
 </div> 
     `
+
 
 });

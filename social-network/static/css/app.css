@@ -1,3 +1,6 @@
 .sidebar {
     background: #0062cc !important;
 }
+.errorMessage {
+    color: red;
+}

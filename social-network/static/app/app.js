@@ -3,6 +3,7 @@ const Register = {template: '<register></register>'}
 const HomePageRegular = {template: '<home-page-regular></home-page-regular>'}
 const HomePageAdmin = {template: '<home-page-admin></home-page-admin>'}
 const HomePageGuest = {template: '<home-page-guest></home-page-guest>'}
+const ChangePassword = {template: '<change-password></change-password>'}
 
 const router = new VueRouter({
 	mode: 'hash',
@@ -11,7 +12,8 @@ const router = new VueRouter({
 		{ path: '/registration', component: Register },
 		{ path: '/homePageRegular', component: HomePageRegular},
 		{ path: '/homePageAdmin', component: HomePageAdmin},
-		{ path: '/homePageGuest', component: HomePageGuest}
+		{ path: '/homePageGuest', component: HomePageGuest},
+		{ path: '/changePassword', component: ChangePassword}
 	]
 });
 
@@ -32,7 +34,11 @@ const app = new Vue({
 			localStorage.clear();
 			this.loggedUser = null;
 			router.push('/');
-		}
+		},
+		changePassword: function() {
+			router.push('changePassword');
+		},
+
 	}
 });
 

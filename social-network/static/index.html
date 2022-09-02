@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link href="css/toast.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/toast.css"/>
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="css/app.css"/>
 </head>
@@ -44,6 +44,9 @@
                     <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
                 </li>
                 <li>
+                    <a href="#" v-on:click="changePassword()"><span class="fa fa-key"></span>Change Password</a>
+                </li>
+                <li>
                     <a href="#" v-on:click="logOut()"><span class="fa fa-sign-out"></span> Log out</a>
                 </li>
             </ul>
@@ -67,6 +70,9 @@
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
+                </li>
+                <li>
+                    <a href="#" v-on:click="changePassword()"><span class="fa fa-key"></span>Change Password</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="logOut()"><span class="fa fa-sign-out"></span> Log out</a>
@@ -112,6 +118,7 @@
 <script src="app/homePageGuest.js"></script>
 <script src="app/login.js"></script>
 <script src="app/register.js"></script>
+<script src="app/changePassword.js"></script>
 <script src="app/app.js"></script>
 
 
