@@ -1,0 +1,36 @@
+.reg-container{
+    margin: 5% 5% 5% 35%;
+}
+.reg-form {
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.reg-form h3{
+    text-align: center;
+    color: #333;
+}
+.reg-form form{
+    padding: 10%;
+}
+.lregistration-btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.reg-form .registration-btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.reg-form .text{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.reg-errorMessage {
+    color: red;
+}
