@@ -34,6 +34,13 @@ const app = new Vue({
 		});
 	},
 	methods: {
+		homePage: function() {
+			if (window.getCurrentUser().role === 'REGULAR') {
+				router.push('homePageRegular');
+			} else {
+				router.push('homePageAdmin');
+			}
+		},
 		logOut: function() {
 			localStorage.clear();
 			this.loggedUser = null;
@@ -53,6 +60,7 @@ const app = new Vue({
 					username: username
 				}
 			});
+			this.$router.go();
 		}
 
 	}

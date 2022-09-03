@@ -1,0 +1,13 @@
+.friendListContainer {
+    width: 30%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 600px;
+    overflow: scroll;
+    border: 1px solid black;
+    background-size: contain;
+    background-image: url("../images/conect.jpg");
+}
+

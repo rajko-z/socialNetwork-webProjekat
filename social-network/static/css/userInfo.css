@@ -1,4 +1,4 @@
-.profileContainer {
+.profileContainerBigView {
     width: 100%;
     height: 40vh;
     margin-top: -2%;
@@ -9,11 +9,29 @@
     background-image: url("../images/backgroundProfile.png");
 }
 
-.userInfoText {
+.userInfoTextBigView {
     color: white;
     font-size: 20px;
 }
-.userInfoUsernameText {
+.userInfoUsernameTextBigView {
     color: white;
     font-size: 28px;
+}
+
+.profileContainerSmallView {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+.userInfoTextSmallView {
+    color: white;
+    font-size: 10px;
+}
+.userInfoUsernameTextSmallView {
+    color: white;
+    font-size: 14px;
 }

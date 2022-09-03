@@ -84,7 +84,7 @@ Vue.component("edit-profile-image", {
   <div class="row">
         <div class="col-md-6 reg-form">
             <h5>Change profile image</h5>
-            <img v-bind:src="imageUrl" class="profileImageIcon">
+            <img v-bind:src="imageUrl" class="profileImageIconBig">
             <br/>
             <hr>
             <div>

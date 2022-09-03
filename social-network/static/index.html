@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/registration.css"/>
-    <link rel="stylesheet" href="css/changeProfileImage.css"/>
+    <link rel="stylesheet" href="css/image.css"/>
     <link rel="stylesheet" href="css/userInfo.css"/>
+    <link rel="stylesheet" href="css/friendsList.css"/>
 </head>
 <body>
 <div id="socialNetwork">
@@ -29,7 +30,7 @@
             <hr>
             <ul class="list-unsettled components mb-5">
                 <li class="active">
-                    <a href="#"><span class="fa fa-home"></span> Home</a>
+                    <a href="#" v-on:click="homePage()"><span class="fa fa-home"></span> Home</a>
                 </li>
                 <li>
                     <a  v-on:click="userProfilePage()" href="#"><span class="fa fa-user"></span> My Profile</a>
@@ -60,7 +61,7 @@
             <hr>
             <ul class="list-unsettled components mb-5">
                 <li class="active">
-                    <a href="#"><span class="fa fa-home"></span> Home</a>
+                    <a href="#" v-on:click="homePage()" ><span class="fa fa-home"></span> Home</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="userProfilePage()"><span class="fa fa-user"></span> My Profile</a>
@@ -127,6 +128,7 @@
 <script src="app/editProfileImage.js"></script>
 <script src="app/userProfilePage.js"></script>
 <script src="app/userInfoComponent.js"></script>
+<script src="app/friendListComponent.js"></script>
 <script src="app/app.js"></script>
 
 
