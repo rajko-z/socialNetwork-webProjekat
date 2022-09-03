@@ -4,3 +4,7 @@
 .errorMessage {
     color: red;
 }
+
+.errorDiv {
+    border: 2px solid red;
+}

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import model.Entity;
+import model.User;
 
 public abstract class GenericRepository<T extends Entity> {
 	protected HashMap<Long, T> data;
@@ -91,5 +92,5 @@ public abstract class GenericRepository<T extends Entity> {
 	
 	
 	protected abstract T createEntityFromTokens(String[] tokens);
-	
+
 }

@@ -33,7 +33,7 @@ public class UserRepository extends GenericRepository<User> {
 				.filter(u -> u.getUsername().equals(username) && u.getPassword().equals(password))
 				.findFirst().orElse(null);
 	}
-
+	
 	@Override
 	protected User createEntityFromTokens(String[] tokens) {
 		Long id = Long.parseLong(tokens[0]);

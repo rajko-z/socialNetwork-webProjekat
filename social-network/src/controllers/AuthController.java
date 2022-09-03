@@ -47,6 +47,7 @@ public class AuthController {
                     .gender(user.getGender())
                     .isAccountPrivate(user.isAccountPrivate())
                     .role(user.getRole())
+                    .imageUrl(userService.getProfileImageUrlForUser(user))
                     .jwt(JWTUtils.createJWT(user.getUsername()))
                     .build());
     }

@@ -88,7 +88,7 @@ public class UserService {
         }
         User foundUser = getUserByUsername(u.getUsername());
         foundUser.setName(u.getName());
-        foundUser.setSurname(u.getUsername());
+        foundUser.setSurname(u.getSurname());
         foundUser.setAccountPrivate(u.isAccountPrivate());
         foundUser.setDateOfBirth(u.getDateOfBirth());
         foundUser.setGender(u.getGender());

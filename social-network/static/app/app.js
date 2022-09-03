@@ -4,6 +4,7 @@ const HomePageRegular = {template: '<home-page-regular></home-page-regular>'}
 const HomePageAdmin = {template: '<home-page-admin></home-page-admin>'}
 const HomePageGuest = {template: '<home-page-guest></home-page-guest>'}
 const ChangePassword = {template: '<change-password></change-password>'}
+const EditProfilePage = {template: '<edit-profile-page></edit-profile-page>'}
 
 const router = new VueRouter({
 	mode: 'hash',
@@ -13,7 +14,8 @@ const router = new VueRouter({
 		{ path: '/homePageRegular', component: HomePageRegular},
 		{ path: '/homePageAdmin', component: HomePageAdmin},
 		{ path: '/homePageGuest', component: HomePageGuest},
-		{ path: '/changePassword', component: ChangePassword}
+		{ path: '/changePassword', component: ChangePassword},
+		{ path: '/editProfilePage', component: EditProfilePage}
 	]
 });
 
@@ -38,6 +40,9 @@ const app = new Vue({
 		changePassword: function() {
 			router.push('changePassword');
 		},
+		editProfilePage: function () {
+			router.push('editProfilePage');
+		}
 
 	}
 });

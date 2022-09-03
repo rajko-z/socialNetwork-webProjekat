@@ -20,4 +20,5 @@ public class UserWithJWTResponse {
     private Role role;
     private boolean isAccountPrivate;
     private String jwt;
+    private String imageUrl;
 }

@@ -35,7 +35,8 @@ Vue.component("login", {
                     "dateOfBirth": res.data.dateOfBirth,
                     "gender": res.data.gender,
                     "role": res.data.role,
-                    "isAccountPrivate": res.data.isAccountPrivate
+                    "isAccountPrivate": res.data.isAccountPrivate,
+                    "imageUrl": res.data.imageUrl
                 };
                 let jwt = res.data.jwt;
                 localStorage.setItem("jwt", jwt);
