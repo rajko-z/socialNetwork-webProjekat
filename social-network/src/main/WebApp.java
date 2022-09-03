@@ -55,6 +55,7 @@ public class WebApp {
             get("/users/getPostsWithComments/:username", UserController::getPostsWithCommentsForUsername);
 
             get("/users/getFeed", UserController::getFeed);
+            get("/users/all", UserController::getAll);
             get("/users/:username", UserController::getUserByUsername);
             post("/posts", PostController::addPost);
             get("/friendStatus/getFriends", FriendStatusController::getFriends);

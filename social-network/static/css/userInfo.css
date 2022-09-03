@@ -6,15 +6,18 @@
     flex-direction: row;
     align-items: center;
     align-content: center;
-    background-image: url("../images/backgroundProfile.png");
+    background-color: aliceblue;
+    /*border: 1px solid darkblue;*/
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /*background-image: url("../images/backgroundProfile.png");*/
 }
 
 .userInfoTextBigView {
-    color: white;
+    color: darkblue;
     font-size: 20px;
 }
 .userInfoUsernameTextBigView {
-    color: white;
+    color: darkblue;
     font-size: 28px;
 }
 
@@ -28,10 +31,10 @@
 }
 
 .userInfoTextSmallView {
-    color: white;
+    color: darkblue;
     font-size: 10px;
 }
 .userInfoUsernameTextSmallView {
-    color: white;
+    color: darkblue;
     font-size: 14px;
 }

@@ -7,7 +7,7 @@
     max-height: 600px;
     overflow: scroll;
     border: 1px solid black;
-    background-size: contain;
-    background-image: url("../images/conect.jpg");
+    background-color: aliceblue;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

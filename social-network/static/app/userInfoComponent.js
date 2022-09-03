@@ -3,6 +3,8 @@ Vue.component("user-info", {
     props: ['user', 'view'],
     data: function () {
         return {
+            loggedUser: window.getCurrentUser(),
+            friendStatus: null
         }
     },
 
@@ -12,6 +14,16 @@ Vue.component("user-info", {
             let ageDate = new Date(ageDifMs);
             return Math.abs(ageDate.getUTCFullYear() - 1970);
         }
+    },
+
+    mounted: function () {
+          if (this.loggedUser != null && this.loggedUser.role === 'REGULAR') {
+              window.API.get("friendStatus/" + this.user.username).then(res => {
+                  this.friendStatus = res.data;
+              }).catch(err => {
+                  alert(err.response.data);
+              });
+          }
     },
 
     methods: {
@@ -25,7 +37,35 @@ Vue.component("user-info", {
                 }
             });
             this.$router.go();
+        },
+
+        sendFriendRequest: function() {
+            window.API.post("friendStatus/sendRequestTo/" + this.user.username).then(res => {
+                alert("You successfully sent friend request to" + this.user.username);
+                this.friendStatus = 'PENDING';
+            }).catch(err => {
+                alert(err.response.data);
+            });
+        },
+
+        acceptFriendRequest: function() {
+            window.API.put("friendStatus/acceptRequest/" + this.user.username).then(res => {
+                alert("You are now friend with " + this.user.username);
+                this.friendStatus = 'FRIENDS';
+            }).catch(err => {
+                alert(err.response.data);
+            });
+        },
+
+        unfollow: function () {
+            window.API.delete("friendStatus/removeFriend/" + this.user.username).then(res => {
+                alert("You successfully unfollowed " + this.user.username);
+                this.friendStatus = 'NOT_FRIENDS';
+            }).catch(err => {
+                alert(err.response.data);
+            });
         }
+
     },
 
 
@@ -50,6 +90,16 @@ Vue.component("user-info", {
                 </td>
             </tr>
         </table>
+        
+        <div v-if="loggedUser != null && loggedUser.role==='REGULAR' && loggedUser.username != user.username" style="margin-left: 40%; margin-top: 15%">
+            <button class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
+            &nbsp;&nbsp;
+            <button v-on:click="sendFriendRequest()" v-if="friendStatus==='NOT_FRIENDS'" class="btn btn-primary"><i class="fa fa-handshake-o"></i>&nbsp;Send friend request</button>
+            <button v-on:click="unfollow()" v-else-if="friendStatus==='FRIENDS'" class="btn btn-primary"><i class="fa fa-user-times"></i>&nbsp;Unfollow</button>
+            <button v-on:click="acceptFriendRequest()" v-else-if="friendStatus==='ACCEPT'" class="btn btn-primary"><i class="fa fa-user-plus"></i>&nbsp;Accept request</button>
+            <button v-else class="btn btn-primary">Pending...</button>
+        </div>
+        
     </div>
     <div v-else-if="view==='small'" class="profileContainerSmallView" on:click="userProfilePage" >
         <img class="profileImageIconMedium" v-bind:src="user.profileImageUrl" />
@@ -69,6 +119,14 @@ Vue.component("user-info", {
                 </td>
             </tr>
         </table>
+        
+         <div v-if="loggedUser != null && loggedUser.role==='REGULAR' && loggedUser.username != user.username" style="margin-left: 10%">
+            <button title="Send message" style="font-size: 14px;color:darkblue" class="btn"><i class="fa fa-paper-plane"></i></button>
+            <button title="Send friend request" style="font-size: 14px;color:darkblue" v-on:click="sendFriendRequest()" v-if="friendStatus==='NOT_FRIENDS'" class="btn"><i class="fa fa-handshake-o"></i></button>
+            <button title="Unfollow" style="font-size: 14px;color:darkblue" v-on:click="unfollow()" v-else-if="friendStatus==='FRIENDS'" class="btn"><i class="fa fa-user-times"></i></button>
+            <button title="Accept friend request" style="font-size: 14px;color:darkblue" v-on:click="acceptFriendRequest()" v-else-if="friendStatus==='ACCEPT'" class="btn"><i class="fa fa-user-plus"></i></button>
+            <button title="Waiting on user" style="font-size: 14px;color:darkblue" v-else class="btn">Pending...</button>
+        </div>
     </div>
 </div>
     `

@@ -7,6 +7,7 @@ import dto.post.PostDTOWithUser;
 import dto.post.PostDTOWithoutUser;
 import dto.user.NewUserDTO;
 import dto.user.UpdatedUserDTO;
+import dto.user.UserDTO;
 import exceptions.BadRequestException;
 import model.FriendStatus;
 import model.Post;
@@ -34,6 +35,9 @@ public class UserController {
     private static final UserService userService = new UserService(RepoFactory.userRepo);
     private static final FriendStatusService friendStatusService = new FriendStatusService();
     private static final PostService postService = new PostService(RepoFactory.postRepo);
+
+
+
 
     // POST api/users
     public static Object registerNewUser(Request req, Response res) {
@@ -219,5 +223,11 @@ public class UserController {
 
         Gson gson = GsonUtil.createGsonWithDateSupport();
         return gson.toJson(feedPosts);
+    }
+
+    public static Object getAll(Request request, Response response) {
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        List<UserDTO> all = RepoFactory.userRepo.getAll().stream().map(DTOConverter::convertUserToDto).collect(Collectors.toList());
+        return gson.toJson(all);
     }
 }
