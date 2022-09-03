@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/image.css"/>
     <link rel="stylesheet" href="css/userInfo.css"/>
     <link rel="stylesheet" href="css/friendsList.css"/>
+    <link rel="stylesheet" href="css/friendRequestPage.css"/>
 </head>
 <body>
 <div id="socialNetwork">
@@ -39,7 +40,7 @@
                     <a href="#"  v-on:click="editProfilePage()"><span class="fa fa-edit"></span>Edit Profile</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-user-plus"></span>Friend Requests</a>
+                    <a href="#" v-on:click="friendRequestPage()"><span class="fa fa-user-plus"></span>Friend Requests</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-search"></span>Find Users</a>
@@ -62,9 +63,6 @@
             <ul class="list-unsettled components mb-5">
                 <li class="active">
                     <a href="#" v-on:click="homePage()" ><span class="fa fa-home"></span> Home</a>
-                </li>
-                <li>
-                    <a href="#" v-on:click="userProfilePage()"><span class="fa fa-user"></span> My Profile</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="editProfilePage()"><span class="fa fa-edit"></span>Edit Profile</a>
@@ -129,6 +127,7 @@
 <script src="app/userProfilePage.js"></script>
 <script src="app/userInfoComponent.js"></script>
 <script src="app/friendListComponent.js"></script>
+<script src="app/friendRequestsPage.js"></script>
 <script src="app/app.js"></script>
 
 

@@ -6,6 +6,7 @@ const HomePageGuest = {template: '<home-page-guest></home-page-guest>'}
 const ChangePassword = {template: '<change-password></change-password>'}
 const EditProfilePage = {template: '<edit-profile-page></edit-profile-page>'}
 const UserProfilePage = {template: '<user-profile-page></user-profile-page>'}
+const FriendRequestPage = {template: '<friend-request-page></friend-request-page>'}
 
 const router = new VueRouter({
 	mode: 'hash',
@@ -18,9 +19,9 @@ const router = new VueRouter({
 		{ path: '/changePassword', component: ChangePassword},
 		{ path: '/editProfilePage', component: EditProfilePage},
 		{ path: '/userProfilePage:username', name: 'userProfilePage', component: UserProfilePage},
+		{ path: '/friendRequestPage', component: FriendRequestPage}
 	]
 });
-
 
 const app = new Vue({
 	router,
@@ -51,6 +52,9 @@ const app = new Vue({
 		},
 		editProfilePage: function () {
 			router.push('editProfilePage');
+		},
+		friendRequestPage: function() {
+			router.push('friendRequestPage');
 		},
 		userProfilePage: function () {
 			let username = window.getCurrentUser().username;
