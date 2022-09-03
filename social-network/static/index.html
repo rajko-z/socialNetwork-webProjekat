@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/registration.css"/>
     <link rel="stylesheet" href="css/changeProfileImage.css"/>
+    <link rel="stylesheet" href="css/userInfo.css"/>
 </head>
 <body>
 <div id="socialNetwork">
@@ -31,7 +32,7 @@
                     <a href="#"><span class="fa fa-home"></span> Home</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-user"></span> My Profile</a>
+                    <a  v-on:click="userProfilePage()" href="#"><span class="fa fa-user"></span> My Profile</a>
                 </li>
                 <li>
                     <a href="#"  v-on:click="editProfilePage()"><span class="fa fa-edit"></span>Edit Profile</a>
@@ -62,7 +63,7 @@
                     <a href="#"><span class="fa fa-home"></span> Home</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-user"></span> My Profile</a>
+                    <a href="#" v-on:click="userProfilePage()"><span class="fa fa-user"></span> My Profile</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="editProfilePage()"><span class="fa fa-edit"></span>Edit Profile</a>
@@ -124,6 +125,8 @@
 <script src="app/editProfilePage.js"></script>
 <script src="app/editBasicInfo.js"></script>
 <script src="app/editProfileImage.js"></script>
+<script src="app/userProfilePage.js"></script>
+<script src="app/userInfoComponent.js"></script>
 <script src="app/app.js"></script>
 
 

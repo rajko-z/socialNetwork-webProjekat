@@ -18,7 +18,7 @@ public class DTOConverter {
         return UserDTO.builder()
                 .username(user.getUsername())
                 .name(user.getName())
-                .surname(user.getUsername())
+                .surname(user.getSurname())
                 .accountPrivate(user.isAccountPrivate())
                 .dateOfBirth(user.getDateOfBirth())
                 .gender(user.getGender())
