@@ -25,11 +25,6 @@ Vue.component("user-profile-page", {
             alert(err.response.data);
         });
     }
-    //
-    // watch: {
-    //     '$route.params': this.loadUser(),
-    // }
-
     ,
 
     template: `
@@ -37,7 +32,10 @@ Vue.component("user-profile-page", {
     <user-info :user="user" view="big"></user-info>
     <br/>
     <br/>
-    <friend-list :username="user.username"></friend-list>
+    <div style="display: flex;flex-direction: row;">
+        <friend-list :username="user.username"></friend-list>
+        <post-list :user="user"></post-list>
+    </div>
 </div>
     `
 

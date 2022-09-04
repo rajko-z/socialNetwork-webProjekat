@@ -1,0 +1,20 @@
+.postsListContainer {
+    width: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.postsListButtonContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.postsListButtonContainer button {
+    width: 200px;
+
+}

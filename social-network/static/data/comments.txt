@@ -29,4 +29,9 @@
 28|8|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
 29|7|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
 30|5|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-31|3|Updatovan komentar|2022-08-29 19:37:51|2022-08-29 19:52:17|true
+31|3|Updatovan komentarrr|2022-08-29 19:37:51|2022-09-04 16:10:24|true
+32|3|Moj novi komentar|2022-09-04 16:25:07|2022-09-04 16:41:41|false
+33|3|dodajem novi komentarfdsfdsfdsf|2022-09-04 16:42:07|2022-09-04 16:42:15|false
+34|3|sebi komentarisemnmmm|2022-09-04 17:12:06|2022-09-04 17:12:18|false
+35|3|ostavljam komentar|2022-09-04 17:27:19|null|true
+36|3|Lepo more nema sta|2022-09-04 17:27:29|2022-09-04 17:27:56|false
