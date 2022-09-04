@@ -7,16 +7,7 @@ Vue.component("home-page-regular", {
         }
     },
 
-    template: `
-<div>
-    <h1>REGULAR USER HOME PAGE - {{loggedUser.username}}</h1>
-    <hr>
-    <div v-for="p in posts">
-        {{p.text}}
-    </div>
-</div>
-    `
-    ,
+
     mounted() {
         if (window.getCurrentUser() === null) {
             router.push('/');
@@ -24,8 +15,22 @@ Vue.component("home-page-regular", {
         window.API.get("users/getFeed").then(res => {
             this.posts = res.data;
         }).catch(err => {
-           alert(err.response.data);
+            alert(err.response.data);
         });
-    }
+    },
 
+    template: `
+<div>
+    <div class="homePagePostListContainer">
+        <h4>Welcome back {{loggedUser.username}} <span class="wavingHand">👋</span></h4>
+        <hr>
+        <div v-for="post in posts">
+            <post-card :post="post" :user="post.user"></post-card>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+    </div>
+</div>
+    `
 });

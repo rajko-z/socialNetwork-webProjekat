@@ -11,24 +11,24 @@ Vue.component("friend-list", {
         if (window.getCurrentUser() === null) {
             router.push('/');
         }
-        // if (window.getCurrentUser().username === this.username) {
-        //     window.API.get("friendStatus/getFriends").then(res => {
-        //         this.friends = res.data;
-        //     }).catch(err => {
-        //         alert(err.response.data);
-        //     })
-        // } else {
-        //     window.API.get("friendStatus/getCommonFriends/" + this.username).then(res => {
-        //         this.friends = res.data;
-        //     }).catch(err => {
-        //         alert(err.response.data);
-        //     })
-        // }
-        window.API.get("users/all").then(res => {
-            this.friends = res.data;
-        }).catch(err => {
-            alert(err.response.data);
-        })
+        if (window.getCurrentUser().username === this.username) {
+            window.API.get("friendStatus/getFriends").then(res => {
+                this.friends = res.data;
+            }).catch(err => {
+                alert(err.response.data);
+            })
+        } else {
+            window.API.get("friendStatus/getCommonFriends/" + this.username).then(res => {
+                this.friends = res.data;
+            }).catch(err => {
+                alert(err.response.data);
+            })
+        }
+        // window.API.get("users/all").then(res => {
+        //     this.friends = res.data;
+        // }).catch(err => {
+        //     alert(err.response.data);
+        // })
     }
     ,
 

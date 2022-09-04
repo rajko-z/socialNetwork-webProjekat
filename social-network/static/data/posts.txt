@@ -14,7 +14,7 @@
 13|R|ovo je moj novi posreret3re|12,13,14,15|2022-08-20 15:00:10|11|true
 14|R|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|null|false
 15|R|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|12|false
-16|R|ovo je fds fds fds fdsmoj novi post6|null|2022-08-20 15:00:10|null|false
+16|R|ovo je fds fds fds fdsmoj novi post6|37|2022-08-20 15:00:10|null|false
 17|R|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|13|false
 18|R|ovo jfdsfdsfdsfdf d dfd e moj novi post1|30|2022-08-20 15:00:10|null|false
 19|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|null|2022-08-20 15:00:10|11|false

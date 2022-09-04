@@ -8,6 +8,15 @@
     justify-content: center;
 }
 
+.homePagePostListContainer {
+    margin: 2% auto;
+    width: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .postsListButtonContainer {
     display: flex;
     justify-content: center;
