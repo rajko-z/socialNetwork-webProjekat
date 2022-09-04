@@ -38,11 +38,11 @@ Vue.component("register", {//userName | password | name | surname | dateOfBirth 
                     "isAccountPrivate": res.data.isAccountPrivate
                 };
 
-
-                this.sendLoginEvent();
+                alert("Registered Successfully.;");
+                router.push('/login');
 
             }).catch(err => {
-                this.textEror = res.messageerror();
+                this.textEror = err.response.data;
 
             })
         }
@@ -90,10 +90,10 @@ Vue.component("register", {//userName | password | name | surname | dateOfBirth 
                     <label for="vehicle1"> Private account</label><br>
                 </div>
                 
-                <div class="form-group" v-if="errorText">
-                    <label class="reg-errorMessage" >textEror</label>
+                <div class="form-group" v-if="textEror">
+                    <label class="reg-errorMessage" >{{textEror}}</label>
                 </div>
-                
+                <hr/>
                 <div class="form-group">
                     <input v-on:click="registration($event)" type="submit" class="registration-btnSubmit" value="Registration" />
                 </div>
