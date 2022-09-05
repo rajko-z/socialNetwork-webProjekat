@@ -1,11 +1,12 @@
 package repository;
 
-import java.time.LocalDateTime;
-
 import model.DirectMessage;
 import model.User;
 import util.DateUtil;
-import util.DateUtil;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DirectMessageRepository extends GenericRepository<DirectMessage> {
 	
@@ -33,6 +34,20 @@ public class DirectMessageRepository extends GenericRepository<DirectMessage> {
 		
 		return new DirectMessage(id,from,to,createdAt,text,adminSent);
 		 
+	}
+
+
+
+	public List<DirectMessage> getChat(long idUserSend, long idUserTo)
+	{
+		List<DirectMessage> directMessageList;
+		directMessageList =  this.data.values().stream()
+				.filter(u ->
+						(u.getFrom().getId().equals(idUserSend) && u.getTo().getId().equals(idUserTo))||(u.getFrom().getId().equals(idUserTo) && u.getTo().getId().equals(idUserSend))  )
+				.collect(Collectors.toList());
+
+		return directMessageList;
+
 	}
 	
 }

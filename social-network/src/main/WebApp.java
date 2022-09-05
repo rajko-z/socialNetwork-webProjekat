@@ -67,6 +67,7 @@ public class WebApp {
             delete("/friendStatus/removeFriend/:username", FriendStatusController::removeFriend);
             put("/friendStatus/acceptRequest/:username", FriendStatusController::acceptRequest);
             post("/sendMessageTo", DirectMessageController::sendDirectMessage);
+            get("/messages/:username/:usernameTo",DirectMessageController::getAllMessages);
             post("/comments", CommentController::createComment);
             put("/comments", CommentController::updateComment);
             delete("/comments/:id",CommentController::deleteComment);

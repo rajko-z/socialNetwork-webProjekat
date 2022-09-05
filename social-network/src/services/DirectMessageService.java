@@ -1,10 +1,14 @@
 package services;
 
 import exceptions.BadRequestException;
-import model.*;
+import model.DirectMessage;
+import model.Role;
+import model.User;
 import repository.DirectMessageRepository;
 import repository.RepoFactory;
 import util.Constants;
+
+import java.util.List;
 
 public class DirectMessageService {
 
@@ -25,6 +29,11 @@ public class DirectMessageService {
         DirectMessage created = this.directMessageRepository.add(new DirectMessage(from ,to,text,adminSent));
         directMessageRepository.saveData(Constants.FILE_DIRECT_MESSAGE_HEADER);
         return created;
+    }
+
+
+    public List<DirectMessage> getChat (User from, User to){
+        return  directMessageRepository.getChat(from.getId(),to.getId());
     }
 
 

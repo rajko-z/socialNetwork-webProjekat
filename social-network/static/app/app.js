@@ -7,6 +7,8 @@ const ChangePassword = {template: '<change-password></change-password>'}
 const EditProfilePage = {template: '<edit-profile-page></edit-profile-page>'}
 const UserProfilePage = {template: '<user-profile-page></user-profile-page>'}
 const FriendRequestPage = {template: '<friend-request-page></friend-request-page>'}
+const MessagePage = {template: '<message-page></message-page>'}
+
 
 const router = new VueRouter({
 	mode: 'hash',
@@ -20,7 +22,8 @@ const router = new VueRouter({
 		{ path: '/changePassword', component: ChangePassword},
 		{ path: '/editProfilePage', component: EditProfilePage},
 		{ path: '/userProfilePage:username', name: 'userProfilePage', component: UserProfilePage},
-		{ path: '/friendRequestPage', component: FriendRequestPage}
+		{ path: '/friendRequestPage', component: FriendRequestPage},
+		{ path: '/messages:username', name: 'messages', component: MessagePage}
 	]
 });
 
@@ -69,9 +72,19 @@ const app = new Vue({
 				}
 			});
 			this.$router.go();
+		},
+		mess: function() {
+			let username = window.getCurrentUser().username;
+			router.push({
+				name: 'messages',
+				params: {
+					username: username
+				}
+			});
+			this.$router.go();
 		}
+	},
 
-	}
 });
 
 

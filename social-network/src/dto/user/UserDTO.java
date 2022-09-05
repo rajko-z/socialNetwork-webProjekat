@@ -21,4 +21,5 @@ public class UserDTO {
     private boolean isBlocked;
     private Role role;
     private String profileImageUrl;
+
 }

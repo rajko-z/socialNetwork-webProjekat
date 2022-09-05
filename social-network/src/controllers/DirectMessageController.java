@@ -1,7 +1,6 @@
 package controllers;
 
 import com.google.gson.Gson;
-import dto.comment.NewCommentDTO;
 import dto.message.DirectMessageDTO;
 import dto.message.NewMessageDTO;
 import exceptions.BadRequestException;
@@ -15,6 +14,10 @@ import spark.Response;
 import util.DTOConverter;
 import util.JWTUtils;
 import util.gson.GsonUtil;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static spark.Spark.halt;
 
@@ -75,6 +78,45 @@ public class DirectMessageController {
             return e.getMessage();
         }
     }
+
+
+
+    public static Object getAllMessages(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+
+        String username = req.params("username");
+        User user = userService.getUserByUsername(username);
+        if (user == null) {
+            res.status(404);
+            return "User with username: " + username + " not found.";
+        }
+
+
+        String usernameTo = req.params("usernameTo");
+        User userTo = userService.getUserByUsername(usernameTo);
+        if (userTo == null) {
+            res.status(404);
+            return "User with username: " + usernameTo + " not found.";
+        }
+
+
+        List<DirectMessage> chat = directMessageService.getChat(user,userTo);
+
+        List<DirectMessageDTO> retChat =
+                chat.stream().map(p->
+                        DirectMessageDTO.builder()
+                                .from(DTOConverter.convertUserToDto(p.getFrom()))
+                                .to(DTOConverter.convertUserToDto(p.getTo()))
+                                .adminSent(p.isAdminSent())
+                                .createdAt(p.getCreatedAt())
+                                .text(p.getText()).build()).sorted(Comparator.comparing(DirectMessageDTO::getCreatedAt)).collect(Collectors.toList());
+
+
+
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        return gson.toJson(retChat);
+    }
+
 
 
 
