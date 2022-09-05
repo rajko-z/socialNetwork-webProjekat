@@ -93,6 +93,13 @@ Vue.component("post-list", {
         <h5 v-else-if="postType==='regular'" style="color: darkblue">Regular posts</h5>
         <h5 v-else-if="postType==='image'" style="color: darkblue">Image posts</h5>
         <hr>
+        
+        <div v-if="postType==='regular' && loggedUser.username===user.username">
+            <add-regular-post></add-regular-post>
+            <hr>
+        </div>
+        
+        
         <br/>
         
         <div v-for="post in posts">

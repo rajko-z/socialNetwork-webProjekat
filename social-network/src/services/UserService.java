@@ -127,14 +127,14 @@ public class UserService {
                         .type(p.getType())
                         .comments(DTOConverter.convertListOfCommentsToDTOs(p.getUndeletedComments())
                                 .stream()
-                                .sorted(Comparator.comparing(CommentDTO::getCreatedAt))
+                                .sorted(Comparator.comparing(CommentDTO::getCreatedAt).reversed())
                                 .collect(Collectors.toList()))
                         .build();
 
                 feedPosts.add(postDTOWithUser);
             }
         }
-        feedPosts.sort(Comparator.comparing(PostDTOWithUser::getCreatedAt));
+        feedPosts.sort(Comparator.comparing(PostDTOWithUser::getCreatedAt).reversed());
         return feedPosts;
     }
 }

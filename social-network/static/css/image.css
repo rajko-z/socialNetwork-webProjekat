@@ -7,6 +7,14 @@
     object-fit: cover;
 }
 
+.addPostImageIconBig {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+
 .profileImageIconMedium {
     display: inline-block;
     width: 60px;

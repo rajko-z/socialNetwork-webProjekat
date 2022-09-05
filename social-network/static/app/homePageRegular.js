@@ -23,7 +23,12 @@ Vue.component("home-page-regular", {
 <div>
     <div class="homePagePostListContainer">
         <h4>Welcome back {{loggedUser.username}} <span class="wavingHand">👋</span></h4>
-        <hr>
+        <add-regular-post></add-regular-post>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div v-for="post in posts">
             <post-card :post="post" :user="post.user"></post-card>
             <br/>
