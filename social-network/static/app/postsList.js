@@ -99,11 +99,18 @@ Vue.component("post-list", {
             <hr>
         </div>
         
+         <div v-if="postType==='image' && loggedUser.username===user.username">
+            <add-image-post></add-image-post>
+            <hr>
+        </div>
         
         <br/>
         
         <div v-for="post in posts">
             <post-card :post="post" :user="user"></post-card>
+            <br/>
+            <br/>
+            <br/>
             <br/>
         </div>
     </div>
