@@ -76,7 +76,7 @@ Vue.component("post-card", {
         </div>
         
         <div class="card-body">
-            <p v-if="post.text" class="card-text">
+            <p v-if="post.text !== null && post.text !== '' && post.text!=='null'" class="card-text">
                 {{post.text}}
             </p>
             <div style="width: 100%;"  v-if="post.imageUrl">

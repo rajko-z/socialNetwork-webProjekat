@@ -68,7 +68,7 @@ Vue.component("add-image-post", {
 
         postClicked: function() {
             if (this.imageUrl === null) {
-                alert("Please upload image.");
+                alert("Please choose file.");
                 return;
             }
             let newImagePost = {
