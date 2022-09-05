@@ -17,7 +17,6 @@
     <orderEntry type="library" name="javaxt-core" level="project" />
     <orderEntry type="library" name="jetty-http-9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="jetty-io-9.3.6.v20151106" level="project" />
-    <orderEntry type="library" name="jetty-security-9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="jetty-server-9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="jetty-servlet-9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="jetty-util-9.3.6.v20151106" level="project" />
@@ -29,7 +28,6 @@
     <orderEntry type="library" name="slf4j-api-1.7.13" level="project" />
     <orderEntry type="library" name="slf4j-api-1.7.21" level="project" />
     <orderEntry type="library" name="slf4j-simple-1.7.21" level="project" />
-    <orderEntry type="library" name="spark-core-2.5.5" level="project" />
     <orderEntry type="library" name="websocket-api-9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="websocket-client-9.3.6.v20151106" level="project" />
     <orderEntry type="library" name="websocket-common-9.3.6.v20151106" level="project" />
@@ -41,5 +39,7 @@
     <orderEntry type="library" name="javax.el-3.0.0" level="project" />
     <orderEntry type="library" name="jboss-logging-3.3.2.Final" level="project" />
     <orderEntry type="library" name="validation-api-2.0.1.Final" level="project" />
+    <orderEntry type="library" name="jetty-security-9.3.6.v20151106" level="project" />
+    <orderEntry type="library" name="spark-core-2.5.5" level="project" />
   </component>
 </module>

@@ -12,6 +12,7 @@ const router = new VueRouter({
 	mode: 'hash',
 	routes: [
 		{ path: '/', component: Login},
+		{ path: '/login', component: Login},
 		{ path: '/registration', component: Register },
 		{ path: '/homePageRegular', component: HomePageRegular},
 		{ path: '/homePageAdmin', component: HomePageAdmin},
@@ -41,6 +42,9 @@ const app = new Vue({
 			} else {
 				router.push('homePageAdmin');
 			}
+		},
+		reg: function() {
+			router.push('registration');
 		},
 		logOut: function() {
 			localStorage.clear();
