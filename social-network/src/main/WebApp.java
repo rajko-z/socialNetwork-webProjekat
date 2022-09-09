@@ -74,6 +74,11 @@ public class WebApp {
             delete("/posts/:id",PostController::deletePost);
             post("/searchUsers",UserController::searchUsers);
 
+
+            //admin
+            get("/allRegular",AdminController::getAllUsers);
+
+
         });
 
     }

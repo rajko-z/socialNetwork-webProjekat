@@ -11,6 +11,17 @@ Vue.component("friend-list", {
         if (window.getCurrentUser() === null) {
             router.push('/');
         }
+        if(window.getCurrentUser().role === "ADMIN")
+        {
+            window.API.get("allRegular").then(res => {
+                this.friends = res.data;
+            }).catch(err => {
+                alert(err.response.data);
+            })
+
+        }
+        else{
+
         if (window.getCurrentUser().username === this.username) {
             window.API.get("friendStatus/getFriends").then(res => {
                 this.friends = res.data;
@@ -23,7 +34,7 @@ Vue.component("friend-list", {
             }).catch(err => {
                 alert(err.response.data);
             })
-        }
+        }}
         // window.API.get("users/all").then(res => {
         //     this.friends = res.data;
         // }).catch(err => {

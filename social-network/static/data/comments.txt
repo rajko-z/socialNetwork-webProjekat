@@ -39,4 +39,3 @@
 38|3|smejem se smejem se|2022-09-05 21:10:50|null|true
 39|3|oci nos usta fd fd fd fd|2022-09-05 21:10:56|2022-09-05 21:11:15|false
 40|4|o da|2022-09-05 21:12:19|null|false
-41|3|vv|2022-09-09 05:12:22|null|false
