@@ -109,8 +109,8 @@ Vue.component("edit-basic-info", {
                         <hr>
                     </div>
                                             
-                    <input v-on:click="saveChanges($event)" type="button" class="registration-btnSubmit" value="Save" />
-                    <input v-on:click="reset($event)" type="button" class="registration-btnSubmit" value="Reset" />
+                    <input v-on:click="saveChanges($event)" type="button" class="btn btn-primary" value="Save" />
+                    <input v-on:click="reset($event)" type="button" class="btn btn-primary" value="Reset" />
                 </div>
             </form>
         </div>

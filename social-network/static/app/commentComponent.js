@@ -42,7 +42,17 @@ Vue.component("comment-component", {
 
         removeComment: function () {
             this.$parent.removeComment(this.comment);
-        }
+        },
+
+        userProfilePage: function (username) {
+            router.push({
+                name: 'userProfilePage',
+                params: {
+                    username: username
+                }
+            });
+            this.$router.go();
+        },
     },
 
     template: `
@@ -53,7 +63,7 @@ Vue.component("comment-component", {
         </div>
         <div class="ml-2">
             <div class="h6 m-0">
-                @{{comment.user.username}}
+                <a href="#" v-on:click="userProfilePage(comment.user.username)" >@{{comment.user.username}}</a>
             </div>
             
             <span v-if="comment.modifiedAt" class="text-muted h8 mb-2" style="font-size: 9px"> <i class="fa fa-clock-o"></i>{{comment.modifiedAt}}</span>

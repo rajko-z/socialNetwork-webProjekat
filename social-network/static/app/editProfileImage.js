@@ -88,12 +88,12 @@ Vue.component("edit-profile-image", {
             <br/>
             <hr>
             <div>
-                <input type="file" ref="profileFile" @change="previewImage" class="registration-btnSubmit" value="Upload" />
+                <input type="file" ref="profileFile" @change="previewImage" class="btn btn-primary" value="Upload" />
                 <br/>
                 <hr/>
-                <input v-on:click="reset($event)" type="button" class="registration-btnSubmit" value="Reset" />
+                <input v-on:click="reset($event)" type="button" class="btn btn-primary" value="Reset" />
                 
-                <input v-if="fileChosen" v-on:click="saveProfileImage($event)" type="button" class="registration-btnSubmit" value="Save" />                
+                <input v-if="fileChosen" v-on:click="saveProfileImage($event)" type="button" class="btn btn-primary" value="Save" />                
             </div>
         </div>
     </div>
