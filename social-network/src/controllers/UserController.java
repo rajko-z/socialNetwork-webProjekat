@@ -9,10 +9,7 @@ import dto.user.NewUserDTO;
 import dto.user.UpdatedUserDTO;
 import dto.user.UserDTO;
 import exceptions.BadRequestException;
-import model.FriendStatus;
-import model.Post;
-import model.PostType;
-import model.User;
+import model.*;
 import repository.RepoFactory;
 import services.FriendStatusService;
 import services.PostService;
@@ -243,8 +240,14 @@ public class UserController {
         if (currentUser == null) {
             halt(401, "Unauthorized");
         }
+        List<PostDTOWithUser> feedPosts;
+        if(currentUser.getRole().equals(Role.ADMIN))
+            feedPosts = userService.getFeedPostsForAdmin();
+        else
+            feedPosts = userService.getFeedPostsForUser(currentUser);
 
-        List<PostDTOWithUser> feedPosts = userService.getFeedPostsForUser(currentUser);
+
+
         feedPosts.sort(Comparator.comparing(PostDTOWithUser::getCreatedAt).reversed());
 
         Gson gson = GsonUtil.createGsonWithDateSupport();

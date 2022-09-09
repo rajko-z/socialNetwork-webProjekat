@@ -115,6 +115,33 @@ public class UserService {
 
     }
 
+    public List<PostDTOWithUser> getFeedPostsForAdmin() {
+        List<PostDTOWithUser> feedPosts = new ArrayList<>();
+
+        for (User u: userRepository.getAll()) {
+            for (Post p : u.getUndeletedPosts()) {
+
+                PostDTOWithUser postDTOWithUser = PostDTOWithUser.builder()
+                        .user(DTOConverter.convertUserToDto(u))
+                        .createdAt(p.getCreatedAt())
+                        .text(p.getText())
+                        .id(p.getId())
+                        .imageUrl(postService.getImageUrlForPost(p))
+                        .isDeleted(p.isDeleted())
+                        .type(p.getType())
+                        .comments(DTOConverter.convertListOfCommentsToDTOs(p.getUndeletedComments())
+                                .stream()
+                                .sorted(Comparator.comparing(CommentDTO::getCreatedAt).reversed())
+                                .collect(Collectors.toList()))
+                        .build();
+
+                feedPosts.add(postDTOWithUser);
+            }
+        }
+        feedPosts.sort(Comparator.comparing(PostDTOWithUser::getCreatedAt).reversed());
+        return feedPosts;
+    }
+
     public List<PostDTOWithUser> getFeedPostsForUser(User currentUser) {
         List<PostDTOWithUser> feedPosts = new ArrayList<>();
 

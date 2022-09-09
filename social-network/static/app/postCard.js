@@ -99,7 +99,7 @@ Vue.component("post-card", {
                <comment-component :comment="comment"></comment-component>
             </div>
         </div>
-        <div v-if="loggedUser != null" class="d-flex justify-content-between align-items-center postCommentsContainer">
+        <div v-if="loggedUser != null && loggedUser.role === 'REGULAR'" class="d-flex justify-content-between align-items-center postCommentsContainer">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="mr-2">
                     <img class="profileImageIconSmall" v-bind:src="loggedUser.imageUrl" alt="">
