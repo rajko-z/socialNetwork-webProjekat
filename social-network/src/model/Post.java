@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,7 @@ public class Post extends Entity{
 		this.type = type;
 		this.createdAt = createdAt;
 		this.isDeleted = isDeleted;
+		this.comments = new ArrayList<>();
 	}
 	public void setDeleted(boolean deleted){
 		this.isDeleted=deleted;

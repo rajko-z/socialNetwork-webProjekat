@@ -192,11 +192,11 @@ public class UserController {
                             .type(p.getType())
                             .comments(DTOConverter.convertListOfCommentsToDTOs(p.getUndeletedComments())
                                     .stream()
-                                    .sorted(Comparator.comparing(CommentDTO::getCreatedAt))
+                                    .sorted(Comparator.comparing(CommentDTO::getCreatedAt).reversed())
                                     .collect(Collectors.toList()))
                             .build()
                     )
-                    .sorted(Comparator.comparing(PostDTOWithoutUser::getCreatedAt))
+                    .sorted(Comparator.comparing(PostDTOWithoutUser::getCreatedAt).reversed())
                     .collect(Collectors.toList());
 
         Gson gson = GsonUtil.createGsonWithDateSupport();
@@ -220,6 +220,7 @@ public class UserController {
         }
 
         List<PostDTOWithUser> feedPosts = userService.getFeedPostsForUser(currentUser);
+        feedPosts.sort(Comparator.comparing(PostDTOWithUser::getCreatedAt).reversed());
 
         Gson gson = GsonUtil.createGsonWithDateSupport();
         return gson.toJson(feedPosts);

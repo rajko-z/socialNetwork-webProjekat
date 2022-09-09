@@ -13,7 +13,7 @@
 12|I|ovo je moj nsrere rovi post2|34|2022-08-20 15:00:10|13|false
 13|R|ovo je moj novi posreret3re|12,13,14,15|2022-08-20 15:00:10|11|true
 14|R|ovo je moj fds f dsfds fds novi post4|null|2022-08-20 15:00:10|null|false
-15|R|ovo je mfdsfdsfdsf ds fds fds oj novi post5|null|2022-08-20 15:00:10|12|false
+15|R|ovo je mfdsfdsfdsf ds fds fds oj novi post5|41|2022-08-20 15:00:10|12|false
 16|R|ovo je fds fds fds fdsmoj novi post6|37|2022-08-20 15:00:10|null|false
 17|R|ovo je moj gfhghgfhgf hgf hgfhnovi post1|null|2022-08-20 15:00:10|13|false
 18|R|ovo jfdsfdsfdsfdf d dfd e moj novi post1|30|2022-08-20 15:00:10|null|false
@@ -29,3 +29,7 @@
 28|R|ovo jfdsfdsfdsfdf d dfd e moj novi post1|23,24|2022-08-20 15:00:10|13|false
 29|I|ovo je moj ngfgfgf gf gfd gfd gdfhgh ovi post1|25|2022-08-20 15:00:11|12|false
 30|I|ovo je moj novgfdgfdgfdgrtytyt ryfgfdg fg fdi post1|26,27,28,29|2022-08-20 15:00:10|12|false
+31|R|DNK ovo ono zezanje.... of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.|null|2022-09-05 20:42:07|14|false
+32|R|vazno je smejati se onako bas jako jbg puko sam...|38,39,40|2022-09-05 21:10:13|15|false
+33|I|null|null|2022-09-05 21:42:34|16|false
+34|I|svemir vauuu|null|2022-09-05 21:43:06|17|false

@@ -23,16 +23,20 @@
 22|4|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
 23|4|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|2022-08-23 23:00:00|false
 24|11|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-25|12|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-26|9|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-27|9|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-28|8|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-29|7|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
-30|5|fdfdfd fd f d fd fds af ds gfh fdgdfds f ds fds f|2022-08-22 22:00:00|null|false
+25|12|neverovatno....|2022-08-22 22:00:00|null|false
+26|9|kako dobro|2022-08-22 22:00:00|null|false
+27|9|woooow|2022-08-22 22:00:00|null|false
+28|8|batice super je|2022-08-22 22:00:00|null|false
+29|7|ekstra stvar|2022-08-22 22:00:00|null|false
+30|5|caosss ovo je presavrseno|2022-08-22 22:00:00|null|false
 31|3|Updatovan komentarrr|2022-08-29 19:37:51|2022-09-04 16:10:24|true
 32|3|Moj novi komentar|2022-09-04 16:25:07|2022-09-04 16:41:41|false
 33|3|dodajem novi komentarfdsfdsfdsf|2022-09-04 16:42:07|2022-09-04 16:42:15|false
-34|3|sebi komentarisemnmmm|2022-09-04 17:12:06|2022-09-04 17:12:18|false
+34|3|sebi komentarisemnmmm i sebe voliiiim|2022-09-04 17:12:06|2022-09-04 17:12:18|false
 35|3|ostavljam komentar|2022-09-04 17:27:19|null|true
-36|3|Lepo more nema sta|2022-09-04 17:27:29|2022-09-04 17:27:56|false
-37|3|slazem se|2022-09-04 18:44:07|null|false
+36|3|Lepo more nema sta kao i JA|2022-09-04 17:27:29|2022-09-04 17:27:56|false
+37|3|slazem se, da ovo je ocajno|2022-09-04 18:44:07|null|false
+38|3|smejem se smejem se|2022-09-05 21:10:50|null|true
+39|3|oci nos usta fd fd fd fd|2022-09-05 21:10:56|2022-09-05 21:11:15|false
+40|4|o da|2022-09-05 21:12:19|null|false
+41|3|vv|2022-09-09 05:12:22|null|false

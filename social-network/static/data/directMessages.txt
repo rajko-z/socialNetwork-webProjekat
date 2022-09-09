@@ -1,7 +1,8 @@
-# id | from user id | to user id | createdAt
+# id | from user id | to user id | text | createdAt | adminSent
 1|13|3|cao karen video sam tvoju sliku i svidjas mi se|2022-08-25 22:00:23|false
 2|3|13|juuu kakav si seljak|2022-08-25 22:02:13|false
 3|13|3|sto odma tako karen aj posalji jos neku sliku|2022-08-25 22:07:53|false
 4|3|13|ides na blok odma|2022-08-25 22:09:23|false
 5|3|8|jgkdslgjksgjksl|2022-09-02 14:37:12|false
 6|3|8|jaja|2022-09-02 14:37:54|false
+7|3|6|cao|2022-09-09 05:11:34|false
