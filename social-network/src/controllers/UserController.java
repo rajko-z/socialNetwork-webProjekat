@@ -67,6 +67,31 @@ public class UserController {
         return "Successfully registered";
     }
 
+    //get  /searchUsers
+    public static Object searchUsers(Request request, Response response) {
+        String payload = request.body();
+        SearchUsersDto srcDTO;
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+
+        try {
+            srcDTO = gson.fromJson(payload, SearchUsersDto.class);
+            if (srcDTO == null) {
+                response.status(400);
+                return "Bad search format request";
+            }
+        } catch (BadRequestException badRequestException) {
+            response.status(400);
+            return badRequestException.getMessage();
+        } catch (Exception e) {
+            response.status(400);
+            return "Bad search request format";
+        }
+
+
+        List<UserDTO> all = RepoFactory.userRepo.getAllUsersSearch(srcDTO).stream().map(DTOConverter::convertUserToDto).collect(Collectors.toList());
+        return gson.toJson(all);
+    }
+
     // PUT /users
     public static Object updateUser(Request req, Response res) {
         User currentUser = JWTUtils.getUserIfLoggedIn(req);

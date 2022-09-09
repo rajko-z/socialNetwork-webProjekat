@@ -47,7 +47,7 @@
                     <a href="#" v-on:click="friendRequestPage()"><span class="fa fa-user-plus"></span>Friend Requests</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-search"></span>Find Users</a>
+                    <a href="#" v-on:click="findUsersPage()" ><span class="fa fa-search"></span>Find Users</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="mess()"><span class="fa fa-paper-plane"></span> Messages</a>
@@ -120,6 +120,8 @@
 <script src="app/common/auth.js"></script>
 
 <!-- components -->
+
+<script src="app/findUsersPage.js"></script>
 <script src="app/chatComponent.js"></script>
 <script src="app/messageComponent.js"></script>
 <script src="app/messagesPage.js"></script>

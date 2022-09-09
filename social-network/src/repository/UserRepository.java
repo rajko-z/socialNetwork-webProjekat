@@ -1,14 +1,19 @@
 package repository;
 
+import dto.SearchUsersDto;
+import model.Gender;
+import model.Post;
+import model.Role;
+import model.User;
+import util.CSVFormatUtil;
+import util.DateUtil;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
-
-import model.*;
-import util.CSVFormatUtil;
-import util.DateUtil;
+import java.util.stream.Collectors;
 
 public class UserRepository extends GenericRepository<User> {
 	
@@ -27,6 +32,37 @@ public class UserRepository extends GenericRepository<User> {
 				.filter(u -> u.getUsername().equals(username))
 				.findFirst().orElse(null);
 	}
+
+
+	public List<User> getAllUsersSearch(SearchUsersDto srcDto){
+
+		List<User> users =  this.data.values().stream()
+				.filter( u -> (srcDto.getName()==null || srcDto.getName().trim().equals("") || srcDto.getName().toUpperCase(Locale.ROOT).equals(u.getName().toUpperCase()))
+						&&(srcDto.getSurname()==null || srcDto.getSurname().trim().equals("") || srcDto.getSurname().toUpperCase(Locale.ROOT).equals(u.getSurname().toUpperCase()))
+						&&(srcDto.getDateOfBirthMin() ==null || srcDto.getDateOfBirthMin().isBefore(u.getDateOfBirth()))
+						&&(srcDto.getDateOfBirthMax() ==null || srcDto.getDateOfBirthMax().isAfter(u.getDateOfBirth()))
+						&&(u.getRole().equals(Role.REGULAR))
+						).collect(Collectors.toList());
+		if(srcDto.getSortBy().toUpperCase(Locale.ROOT).equals("SURNAME"))
+		{
+			users.sort((object1, object2) -> object1.getSurname().toUpperCase(Locale.ROOT).compareTo(object2.getSurname().toUpperCase(Locale.ROOT)));
+		} else if (srcDto.getSortBy().toUpperCase().equals("BIRTHDAY")) {
+			users.sort((object1, object2) -> object1.getDateOfBirth().compareTo(object2.getDateOfBirth()));
+			
+		}
+		else {
+			users.sort((object1, object2) -> object1.getName().toUpperCase(Locale.ROOT).compareTo(object2.getName().toUpperCase(Locale.ROOT)));
+
+		}
+
+		return users;
+	}
+
+
+
+
+
+
 
 	public User getByUsernameAndPassword(String username, String password) {
 		return this.data.values().stream()

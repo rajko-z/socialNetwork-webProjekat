@@ -8,6 +8,7 @@ const EditProfilePage = {template: '<edit-profile-page></edit-profile-page>'}
 const UserProfilePage = {template: '<user-profile-page></user-profile-page>'}
 const FriendRequestPage = {template: '<friend-request-page></friend-request-page>'}
 const MessagePage = {template: '<message-page></message-page>'}
+const FindUsersPage = {template:'<find-user-page></find-user-page>'}
 
 
 const router = new VueRouter({
@@ -23,7 +24,9 @@ const router = new VueRouter({
 		{ path: '/editProfilePage', component: EditProfilePage},
 		{ path: '/userProfilePage:username', name: 'userProfilePage', component: UserProfilePage},
 		{ path: '/friendRequestPage', component: FriendRequestPage},
-		{ path: '/messages:username', name: 'messages', component: MessagePage}
+		{ path: '/messages:username', name: 'messages', component: MessagePage},
+		{ path: '/findUsersPage', component: FindUsersPage},
+
 	]
 });
 
@@ -62,6 +65,9 @@ const app = new Vue({
 		},
 		friendRequestPage: function() {
 			router.push('friendRequestPage');
+		},
+		findUsersPage: function(){
+			router.push('findUsersPage');
 		},
 		userProfilePage: function () {
 			let username = window.getCurrentUser().username;
