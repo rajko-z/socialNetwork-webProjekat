@@ -1,10 +1,11 @@
 package model;
 
+import util.CSVFormatUtil;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import util.CSVFormatUtil;
 
 public class User extends Entity{
 	private String username;
@@ -17,14 +18,14 @@ public class User extends Entity{
 	private boolean isBlocked;
 	private Role role;
 	private Post profileImage;
-	private List<Post> posts;
+	private List<Post> posts= new ArrayList<>();
 	private List<User> friends;
 	
 	
 	// fields only used for parsing bidirectional associations in csv
 
 	public Long _profileImageId;
-	public List<Long> _postIds;
+	public List<Long> _postIds = new ArrayList<>();
 	public List<Long> _friendIds;
 	
 	

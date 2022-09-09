@@ -19,6 +19,11 @@
     font-size: 14px;
     align-content: center;
 }
+.deletePostMenuItem {
+    color: red;
+    font-size: 14px;
+    align-content: center;
+}
 .editCommentMenuItem {
     color: darkblue;
     font-size: 14px;

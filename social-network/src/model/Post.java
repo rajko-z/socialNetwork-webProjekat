@@ -1,13 +1,12 @@
 package model;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import util.CSVFormatUtil;
 import util.DateUtil;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Post extends Entity{
 	private String text;
@@ -26,7 +25,13 @@ public class Post extends Entity{
 		super(id);
 		this.text = text;
 		this.type = type;
-		this.comments = comments;
+		if(comments == null)
+		{
+			this.comments = new ArrayList<>();
+		}
+		else {
+			this.comments = comments;
+		}
 		this.createdAt = createdAt;
 		this.image = image;
 		this.isDeleted = isDeleted;

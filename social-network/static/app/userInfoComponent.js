@@ -17,6 +17,7 @@ Vue.component("user-info", {
     },
 
     mounted: function () {
+
           if (this.loggedUser != null && this.loggedUser.role === 'REGULAR') {
               window.API.get("friendStatus/" + this.user.username).then(res => {
                   this.friendStatus = res.data;

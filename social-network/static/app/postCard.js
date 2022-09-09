@@ -5,14 +5,17 @@ Vue.component("post-card", {
             user: null,
             loggedUser: window.getCurrentUser(),
             commentText: null,
-            comments: this.post.comments
+            comments: this.post.comments,
+            textDel: null,
+
         }
     },
 
     computed: {
         numOfComments() {
             return this.comments.length;
-        }
+        },
+
     },
     methods: {
         addComment: function() {
@@ -31,6 +34,7 @@ Vue.component("post-card", {
                 alert(err.response.data);
             })
         },
+
 
         saveEditedComment: function (newComment) {
             window.API.put("comments", newComment).then(res => {
@@ -53,12 +57,15 @@ Vue.component("post-card", {
             }).catch(err => {
                 alert(err.response.data);
             })
+        },
+        deletePost: function (post) {
+            this.$parent.removePost(this.post);
         }
     },
 
 
     template: `
-<div>
+<div class="d-flex justify-content-between align-items-center">
     <div class="card postCardContainer">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
@@ -106,6 +113,21 @@ Vue.component("post-card", {
         
         
     </div>
+     <div v-if="loggedUser != null && loggedUser.role === 'ADMIN' ">
+            <div class="dropdown">
+                 
+                <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <textarea v-model="textDel"></textarea>
+                    <div><button v-on:click="deletePost(post)"   class="dropdown-item deletePostMenuItem fa fa-pencil" > Delete</button></div>
+
+                </div>
+            </div>
+        </div>
+        
+        
+           
 
 </div>
     `

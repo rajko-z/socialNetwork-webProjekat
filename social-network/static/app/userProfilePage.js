@@ -23,9 +23,11 @@ Vue.component("user-profile-page", {
         let username = this.$route.params.username;
         window.API.get("users/" + username).then(res => {
             this.user = res.data;
+
         }).catch(err => {
             alert(err.response.data);
         });
+        console.log(this.user);
     }
     ,
 
