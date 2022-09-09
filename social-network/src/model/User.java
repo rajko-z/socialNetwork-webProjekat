@@ -110,6 +110,9 @@ public class User extends Entity{
 		return posts.stream().filter(p -> !p.isDeleted()).collect(Collectors.toList());
 	}
 
+	public void setIsBlocked(Boolean b){
+		this.isBlocked = b;
+	}
 	public void setProfileImage(Post profileImage) {
 		this.profileImage = profileImage;
 	}

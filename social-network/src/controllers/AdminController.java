@@ -113,6 +113,37 @@ public class AdminController {
         }
     }
 
+    public static Object changeStatus(Request request, Response response) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(request);
+        if (currentUser == null || !currentUser.getRole().equals(Role.ADMIN)) {
+            halt(401, "Unauthorized");
+        }
+        User u;
+
+
+        try {
+            u = userService.getUserByUsername(request.params("username"));
+            if (u == null) {
+                response.status(400);
+                return "Bad  request";
+            }
+        } catch (Exception e) {
+            response.status(400);
+            return "Bad request format";
+        }
+
+
+
+        try {
+            userService.changeStatus(u);
+            return "Successfully changed status";
+        } catch (BadRequestException e) {
+            response.status(400);
+            return e.getMessage();
+        }
+
+
+    }
 
 
 
