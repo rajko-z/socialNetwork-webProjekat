@@ -27,6 +27,18 @@ Vue.component("user-info", {
     },
 
     methods: {
+        openChat: function () {
+            console.log("idi na chat sa");
+            console.log(this.user.username);
+            router.push({
+                name: 'messages',
+                params: {
+                    username: this.user.username
+                }
+            });
+
+            this.$router.go();
+        },
         userProfilePage: function () {
             console.log("idi na stranicu");
             console.log(this.user.username);
@@ -92,7 +104,7 @@ Vue.component("user-info", {
         </table>
         
         <div v-if="loggedUser != null && loggedUser.role==='REGULAR' && loggedUser.username != user.username" style="margin-left: 40%; margin-top: 15%">
-            <button class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
+            <button v-on:click="openChat()" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
             &nbsp;&nbsp;
             <button v-on:click="sendFriendRequest()" v-if="friendStatus==='NOT_FRIENDS'" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Send friend request</button>
             <button v-on:click="unfollow()" v-else-if="friendStatus==='FRIENDS'" class="btn btn-primary"><i class="fa fa-minus"></i>&nbsp;Unfollow</button>
@@ -121,7 +133,7 @@ Vue.component("user-info", {
         </table>
         
          <div v-if="loggedUser != null && loggedUser.role==='REGULAR' && loggedUser.username != user.username" style="margin-left: 15%">
-            <button title="Send message" style="font-size: 14px;color:darkblue" class="btn"><i class="fa fa-paper-plane"></i></button>
+            <button title="Send message" style="font-size: 14px;color:darkblue" v-on:click="openChat()" class="btn"><i class="fa fa-paper-plane"></i></button>
             <button title="Send friend request" style="font-size: 14px;color:darkblue" v-on:click="sendFriendRequest()" v-if="friendStatus==='NOT_FRIENDS'" class="btn"><i class="fa fa-plus"></i></button>
             <button title="Unfollow" style="font-size: 14px;color:darkblue" v-on:click="unfollow()" v-else-if="friendStatus==='FRIENDS'" class="btn"><i class="fa fa-minus"></i></button>
             <button title="Accept friend request" style="font-size: 14px;color:darkblue" v-on:click="acceptFriendRequest()" v-else-if="friendStatus==='ACCEPT'" class="btn"><i class="fa fa-check"></i></button>

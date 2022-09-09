@@ -33,7 +33,7 @@ Vue.component("user-profile-page", {
     <br/>
     <br/>
     <div style="display: flex;flex-direction: row;">
-        <friend-list :username="user.username"></friend-list>
+        <friend-list :username="user.username" :messPermission=false></friend-list>
         <post-list :user="user"></post-list>
     </div>
 </div>

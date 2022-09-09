@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/postsList.css"/>
     <link rel="stylesheet" href="css/postCard.css"/>
     <link rel="stylesheet" href="css/wavehand.css"/>
+    <link rel="stylesheet" href="css/chatBox.css"/>
 </head>
 <body>
 <div id="socialNetwork">
@@ -49,7 +50,7 @@
                     <a href="#"><span class="fa fa-search"></span>Find Users</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
+                    <a href="#" v-on:click="mess()"><span class="fa fa-paper-plane"></span> Messages</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="changePassword()"><span class="fa fa-key"></span>Change Password</a>
@@ -74,7 +75,7 @@
                     <a href="#"><span class="fa fa-search"></span>Find Users</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
+                    <a href="#" v-on:click="mess()"><span class="fa fa-paper-plane"></span> Messages</a>
                 </li>
                 <li>
                     <a href="#" v-on:click="changePassword()"><span class="fa fa-key"></span>Change Password</a>
@@ -119,6 +120,9 @@
 <script src="app/common/auth.js"></script>
 
 <!-- components -->
+<script src="app/chatComponent.js"></script>
+<script src="app/messageComponent.js"></script>
+<script src="app/messagesPage.js"></script>
 <script src="app/homePageRegular.js"></script>
 <script src="app/homePageAdmin.js"></script>
 <script src="app/homePageGuest.js"></script>

@@ -59,6 +59,13 @@ public class DirectMessageController {
             res.status(400);
             return "Bad Request. Message is empty.";
         }
+        if (!currentUser.getFriends().contains(sendTo))
+        {
+            res.status(400);
+            return "You and "+ sendTo.getUsername()+" are not friends";
+        }
+
+
         try {
 
             DirectMessage created  = directMessageService.sendDirectMessage(currentUser,sendTo,text);
