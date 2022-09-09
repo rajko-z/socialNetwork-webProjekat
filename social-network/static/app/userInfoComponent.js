@@ -4,7 +4,8 @@ Vue.component("user-info", {
     data: function () {
         return {
             loggedUser: window.getCurrentUser(),
-            friendStatus: null
+            friendStatus: null,
+            isBlocked: null,
         }
     },
 
@@ -17,6 +18,7 @@ Vue.component("user-info", {
     },
 
     mounted: function () {
+        this.isBlocked = this.user.isBlocked;
           if (this.loggedUser != null && this.loggedUser.role === 'REGULAR') {
               window.API.get("friendStatus/" + this.user.username).then(res => {
                   this.friendStatus = res.data;
@@ -55,6 +57,20 @@ Vue.component("user-info", {
             window.API.post("friendStatus/sendRequestTo/" + this.user.username).then(res => {
                 alert("You successfully sent friend request to" + this.user.username);
                 this.friendStatus = 'PENDING';
+            }).catch(err => {
+                alert(err.response.data);
+            });
+        },
+        changeStatus: function() {
+            window.API.post("changeStatus/"+ this.user.username).then(res => {
+                alert("You are changed staus of " + this.user.username);
+                console.log(this.isBlocked);
+                if(this.isBlocked){
+                    this.isBlocked = false;
+                }
+                else
+                {this.isBlocked= true;}
+                console.log(this.isBlocked);
             }).catch(err => {
                 alert(err.response.data);
             });
@@ -131,6 +147,12 @@ Vue.component("user-info", {
                 </td>
             </tr>
         </table>
+       <div v-if="loggedUser != null && loggedUser.role==='ADMIN'" style="margin-left: 15%">
+            <button title="Unblock" style="font-size: 14px;color:darkblue" v-on:click="changeStatus()" v-if="isBlocked" class="btn"><i class="fa fa-plus"></i></button>
+             <button title="Block" style="font-size: 14px;color:darkblue" v-on:click="changeStatus()" v-else-if="!isBlocked" class="btn"><i class="fa fa-minus"></i></button>
+           
+           
+        </div>
         
          <div v-if="loggedUser != null && loggedUser.role==='REGULAR' && loggedUser.username != user.username" style="margin-left: 15%">
             <button title="Send message" style="font-size: 14px;color:darkblue" v-on:click="openChat()" class="btn"><i class="fa fa-paper-plane"></i></button>

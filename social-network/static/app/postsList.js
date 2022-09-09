@@ -3,7 +3,7 @@ Vue.component("post-list", {
     data: function () {
         return {
             loggedUser: window.getCurrentUser(),
-            canSeeContent: true,
+            canSeeContent: false,
             posts: [],
             // type of posts: all|regular|image
             postType: 'all'
@@ -11,6 +11,16 @@ Vue.component("post-list", {
     },
 
     methods: {
+        removePost: function (postToRemove,txt) {
+
+            window.API.delete("postsAdmin/" + postToRemove.id+"/"+txt).then(res => {
+                this.posts = this.posts.filter(function(value) {
+                    return value.id !== postToRemove.id;
+                });
+            }).catch(err => {
+                alert(err.response.data);
+            })
+        },
 
         allPostsClicked: function() {
             this.postType = 'all';
@@ -54,6 +64,7 @@ Vue.component("post-list", {
         //     this.canSeeContent = false;                 // samo skinuti komentar u slucaju da korisnik koji nije prijavljen ne moze da vidi postove kod otvorenih profila
         //     return;
         // }
+
         if (window.getCurrentUser().username === this.user.username) {
             this.canSeeContent = true;
             this.getAllPostsFromUser();
@@ -65,6 +76,12 @@ Vue.component("post-list", {
             return;
         }
         else {
+            if(window.getCurrentUser().role ==="ADMIN")
+            {
+                this.canSeeContent =true;
+                this.getAllPostsFromUser();
+            }
+            else{
         window.API.get("friendStatus/" + this.user.username).then(res => {
             if (res.data !== 'FRIENDS') {
                 this.canSeeContent = false;
@@ -76,7 +93,7 @@ Vue.component("post-list", {
             alert(err.response.data);
         })}
 
-    }
+    }}
     ,
 
     template: `

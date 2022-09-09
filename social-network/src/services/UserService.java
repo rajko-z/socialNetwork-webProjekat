@@ -3,7 +3,6 @@ package services;
 import dto.ChangePasswordRequestDTO;
 import dto.comment.CommentDTO;
 import dto.post.PostDTOWithUser;
-import dto.post.PostDTOWithoutUser;
 import dto.user.NewUserDTO;
 import dto.user.UpdatedUserDTO;
 import exceptions.BadRequestException;
@@ -17,7 +16,6 @@ import util.Constants;
 import util.DTOConverter;
 import validation.ValidationService;
 
-import java.awt.image.ConvolveOp;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -109,6 +107,12 @@ public class UserService {
 
         foundUser.setPassword(c.getNewPassword());
         userRepository.saveData(Constants.FILE_USERS_HEADER);
+    }
+    public void changeStatus(User u){
+        u.setIsBlocked(!u.isBlocked());
+        userRepository.saveData(Constants.FILE_USERS_HEADER);
+
+
     }
 
     public List<PostDTOWithUser> getFeedPostsForUser(User currentUser) {

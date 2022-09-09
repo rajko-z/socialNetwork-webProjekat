@@ -124,10 +124,11 @@ public class PostService {
         if (post == null) {
             throw new BadRequestException("Can't find post with id: " + postId);
         }
-
-        if(!user.getUndeletedPosts().contains(this.postRepository.getById(postId)))
-        {
-            throw new ForbiddenAccessException("Can't delete post from other user.");
+        if(!user.getRole().equals(Role.ADMIN)){
+            if(!user.getUndeletedPosts().contains(this.postRepository.getById(postId)))
+            {
+                throw new ForbiddenAccessException("Can't delete post from other user.");
+            }
         }
 
         post.setDeleted(true);

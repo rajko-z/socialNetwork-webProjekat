@@ -79,6 +79,8 @@ public class WebApp {
             get("/allRegular",AdminController::getAllUsers);
             post("/adminSearch", AdminController::searchUsers);
             get("/getFriendsOfUser/:username", AdminController::getFriendsOfUser);
+            delete("/postsAdmin/:id/:text",AdminController::deletePostAdmin);
+            post("/changeStatus/:username",AdminController::changeStatus);
 
 
         });
