@@ -23,7 +23,7 @@ Vue.component("search-page-admin", {
                 "sortBy": this.sortBy
             };
 
-            window.API.post("searchUsers",postRequest).then(res => {
+            window.API.post("adminSearch",postRequest).then(res => {
                 this.users = res.data;
                 console.log(res.data);
                 console.log(this.users);
@@ -63,7 +63,9 @@ Vue.component("search-page-admin", {
             <input v-model="sortBy" type="radio"  value="name">
             <label>Name</label>
             <input v-model="sortBy" type="radio" value="surname">
-            <label>Surname</label>     
+            <label>Surname</label>    
+            <input v-model="sortBy" type="radio" value="username">
+            <label>Username</label>  
              <input v-model="sortBy" type="radio"  value="birthday">
             <label>Birthday</label>          
         </div>

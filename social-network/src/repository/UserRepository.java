@@ -1,5 +1,6 @@
 package repository;
 
+import dto.SearchUsersAdminDto;
 import dto.SearchUsersDto;
 import model.Gender;
 import model.Post;
@@ -58,6 +59,34 @@ public class UserRepository extends GenericRepository<User> {
 		return users;
 	}
 
+
+	//pretrage su uradjene tako da vracaju samo u slucaju tacnih parametara moze se zameniti sa startwith ili contain pa da se ref forma na svaku promenu u textboxu
+	public List<User> getAllUsersSearchAdmin(SearchUsersAdminDto srcDto){
+
+		List<User> users =  this.data.values().stream()
+				.filter( u -> (srcDto.getName()==null || srcDto.getName().trim().equals("") || srcDto.getName().toUpperCase(Locale.ROOT).equals(u.getName().toUpperCase()))
+						&&(srcDto.getSurname()==null || srcDto.getSurname().trim().equals("") || srcDto.getSurname().toUpperCase(Locale.ROOT).equals(u.getSurname().toUpperCase()))
+						&&(srcDto.getUsername()==null || srcDto.getUsername().trim().equals("") || srcDto.getUsername().toUpperCase(Locale.ROOT).equals(u.getUsername().toUpperCase()))
+						&&(u.getRole().equals(Role.REGULAR))
+				).collect(Collectors.toList());
+		if(srcDto.getSortBy().toUpperCase(Locale.ROOT).equals("SURNAME"))
+		{
+			users.sort((object1, object2) -> object1.getSurname().toUpperCase(Locale.ROOT).compareTo(object2.getSurname().toUpperCase(Locale.ROOT)));
+		} else if (srcDto.getSortBy().toUpperCase().equals("BIRTHDAY")) {
+			users.sort((object1, object2) -> object1.getDateOfBirth().compareTo(object2.getDateOfBirth()));
+
+		}
+		 else if (srcDto.getSortBy().toUpperCase().equals("USERNAME")) {
+		users.sort((object1, object2) -> object1.getUsername().toUpperCase(Locale.ROOT).compareTo(object2.getUsername().toUpperCase(Locale.ROOT)));
+
+	}
+		else { // slucaj sortiranja po imenu on se inace podrazumeva
+			users.sort((object1, object2) -> object1.getName().toUpperCase(Locale.ROOT).compareTo(object2.getName().toUpperCase(Locale.ROOT)));
+
+		}
+
+		return users;
+	}
 
 
 

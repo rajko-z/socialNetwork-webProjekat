@@ -77,6 +77,7 @@ public class WebApp {
 
             //admin
             get("/allRegular",AdminController::getAllUsers);
+            post("/adminSearch", AdminController::searchUsers);
 
 
         });

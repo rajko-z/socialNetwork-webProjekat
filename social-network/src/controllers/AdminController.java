@@ -1,7 +1,9 @@
 package controllers;
 
 import com.google.gson.Gson;
+import dto.SearchUsersAdminDto;
 import dto.user.UserDTO;
+import exceptions.BadRequestException;
 import model.Role;
 import model.User;
 import repository.RepoFactory;
@@ -32,6 +34,32 @@ public class AdminController {
         return gson.toJson(all);
     }
 
+
+
+    //get  /searchUsers
+    public static Object searchUsers(Request request, Response response) {
+        String payload = request.body();
+        SearchUsersAdminDto srcDTO;
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+
+        try {
+            srcDTO = gson.fromJson(payload, SearchUsersAdminDto.class);
+            if (srcDTO == null) {
+                response.status(400);
+                return "Bad search format request";
+            }
+        } catch (BadRequestException badRequestException) {
+            response.status(400);
+            return badRequestException.getMessage();
+        } catch (Exception e) {
+            response.status(400);
+            return "Bad search request format";
+        }
+
+
+        List<UserDTO> all = RepoFactory.userRepo.getAllUsersSearchAdmin(srcDTO).stream().map(DTOConverter::convertUserToDto).collect(Collectors.toList());
+        return gson.toJson(all);
+    }
 
 
 
