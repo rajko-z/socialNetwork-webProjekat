@@ -3,7 +3,7 @@ Vue.component("post-list", {
     data: function () {
         return {
             loggedUser: window.getCurrentUser(),
-            canSeeContent: false,
+            canSeeContent: true,
             posts: [],
             // type of posts: all|regular|image
             postType: 'all'
@@ -49,21 +49,22 @@ Vue.component("post-list", {
     },
 
     mounted: function() {
-        if (this.user.accountPrivate === false) {
-            this.canSeeContent = true;
-            this.getAllPostsFromUser();
-            return;
-        }
-        if (window.getCurrentUser() === null) {
-            this.canSeeContent = false;
-            return;
-        }
+
+        // if (window.getCurrentUser() === null) {
+        //     this.canSeeContent = false;                 // samo skinuti komentar u slucaju da korisnik koji nije prijavljen ne moze da vidi postove kod otvorenih profila
+        //     return;
+        // }
         if (window.getCurrentUser().username === this.user.username) {
             this.canSeeContent = true;
             this.getAllPostsFromUser();
             return;
         }
-
+        if (this.user.accountPrivate === false) {
+            this.canSeeContent = true;
+            this.getAllPostsFromUser();
+            return;
+        }
+        else {
         window.API.get("friendStatus/" + this.user.username).then(res => {
             if (res.data !== 'FRIENDS') {
                 this.canSeeContent = false;
@@ -73,7 +74,7 @@ Vue.component("post-list", {
             }
         }).catch(err => {
             alert(err.response.data);
-        })
+        })}
 
     }
     ,

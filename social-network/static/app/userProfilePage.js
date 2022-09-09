@@ -2,7 +2,8 @@
 Vue.component("user-profile-page", {
     data: function () {
         return {
-            user: null
+            user: null,
+            loggedUser : window.getCurrentUser(),
         }
     },
 
@@ -11,6 +12,7 @@ Vue.component("user-profile-page", {
             let username = this.$route.params.username;
             window.API.get("users/" + username).then(res => {
                 this.user = res.data;
+                console.log(me);
             }).catch(err => {
                 alert(err.response.data);
             });
@@ -33,7 +35,7 @@ Vue.component("user-profile-page", {
     <br/>
     <br/>
     <div style="display: flex;flex-direction: row;">
-        <friend-list :username="user.username" :messPermission=false></friend-list>
+        <friend-list v-if="loggedUser != null" :username="user.username" ></friend-list>
         <post-list :user="user"></post-list>
     </div>
 </div>
