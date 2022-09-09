@@ -58,6 +58,16 @@ Vue.component("post-card", {
                 alert(err.response.data);
             })
         },
+
+        userProfilePage: function () {
+            router.push({
+                name: 'userProfilePage',
+                params: {
+                    username: this.user.username
+                }
+            });
+            this.$router.go();
+        },
         deletePost: function (post) {
             this.$parent.removePost(this.post,this.textDel);
         }
@@ -74,7 +84,9 @@ Vue.component("post-card", {
                         <img class="profileImageIconMedium" v-bind:src="user.profileImageUrl" alt="">
                     </div>
                     <div class="ml-2">
-                        <div class="h5 m-0">@{{user.username}}</div>
+                        <div class="h5 m-0">
+                             <a href="#" v-on:click="userProfilePage()" >@{{user.username}}</a>
+                        </div>
                         <div class="h7 text-muted">{{user.name}} {{user.surname}}</div>
                         <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.createdAt}}</div>
                     </div>

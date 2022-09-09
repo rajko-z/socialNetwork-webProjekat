@@ -115,7 +115,7 @@ Vue.component("add-image-post", {
                     <input type="file" ref="postImage" @change="previewImage" class="registration-btnSubmit" value="Upload" />
                     <br/>
                     <hr/>
-                    <input v-on:click="reset($event)" type="button" class="registration-btnSubmit" value="Reset" />
+                    <input v-on:click="reset($event)" type="button" class="btn btn-outline-primary" value="Reset" />
                 </div>
                 <div class="py-4"></div>
             </div>
