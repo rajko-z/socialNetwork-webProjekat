@@ -62,6 +62,23 @@ public class AdminController {
     }
 
 
+    public static Object getFriendsOfUser(Request req, Response res) {
+        User currentUser = JWTUtils.getUserIfLoggedIn(req);
+        if (currentUser == null || !currentUser.getRole().equals(Role.ADMIN)) {
+            halt(401, "Unauthorized");
+        }
+        String username = req.params("username");
+        User u = userService.getUserByUsername(username);
+
+        Gson gson = GsonUtil.createGsonWithDateSupport();
+        List<UserDTO> retVal = u.getFriends().stream()
+                .map(DTOConverter::convertUserToDto)
+                .collect(Collectors.toList());
+
+        return gson.toJson(retVal);
+    }
+
+
 
 
 }

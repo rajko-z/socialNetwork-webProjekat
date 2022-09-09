@@ -78,6 +78,7 @@ public class WebApp {
             //admin
             get("/allRegular",AdminController::getAllUsers);
             post("/adminSearch", AdminController::searchUsers);
+            get("/getFriendsOfUser/:username", AdminController::getFriendsOfUser);
 
 
         });

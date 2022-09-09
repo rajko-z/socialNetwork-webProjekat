@@ -60,6 +60,9 @@ const app = new Vue({
 			this.loggedUser = null;
 			router.push('/');
 		},
+		login: function() {
+			router.push('login');
+		},
 		changePassword: function() {
 			router.push('changePassword');
 		},

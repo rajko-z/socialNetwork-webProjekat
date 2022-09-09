@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/postCard.css"/>
     <link rel="stylesheet" href="css/wavehand.css"/>
     <link rel="stylesheet" href="css/chatBox.css"/>
-    <link rel="stylesheet" href="css/search.css.css"/>
+    <link rel="stylesheet" href="css/search.css"/>
 </head>
 <body>
 <div id="socialNetwork">
@@ -91,6 +91,9 @@
             <hr/>
             <ul class="list-unsettled components mb-5">
                 <li>
+                    <a href="#" v-on:click="login()"><span class="fa fa-sign-in"></span>Log in</a>
+                </li>
+                <li>
                     <a href="#" v-on:click="reg()"><span class="fa fa-user-plus"></span>Register</a>
                 </li>
                 <li>
@@ -122,7 +125,7 @@
 
 <!-- components -->
 
-<script src="app/searchPageAdmin.js"</script
+<script src="app/searchPageAdmin.js"></script>
 <script src="app/findUsersPage.js"></script>
 <script src="app/chatComponent.js"></script>
 <script src="app/messageComponent.js"></script>
