@@ -1,7 +1,6 @@
 package dto;
 
 import lombok.*;
-import validation.AgeRestriction;
 
 import java.time.LocalDate;
 
@@ -19,10 +18,8 @@ public class SearchUsersDto {
     private String sortBy;
 
 
-  @AgeRestriction
   private LocalDate dateOfBirthMin;
 
-  @AgeRestriction
   private LocalDate dateOfBirthMax;
 
 
