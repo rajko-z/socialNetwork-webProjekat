@@ -11,8 +11,9 @@ Vue.component("post-list", {
     },
 
     methods: {
-        removePost: function (postToRemove) {
-            window.API.delete("posts/" + postToRemove.id).then(res => {
+        removePost: function (postToRemove,txt) {
+
+            window.API.delete("postsAdmin/" + postToRemove.id+"/"+txt).then(res => {
                 this.posts = this.posts.filter(function(value) {
                     return value.id !== postToRemove.id;
                 });

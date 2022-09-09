@@ -59,7 +59,7 @@ Vue.component("post-card", {
             })
         },
         deletePost: function (post) {
-            this.$parent.removePost(this.post);
+            this.$parent.removePost(this.post,this.textDel);
         }
     },
 
@@ -119,7 +119,9 @@ Vue.component("post-card", {
                 <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
+                    <label>Unesi razlog brisanja:</label>
                     <textarea v-model="textDel"></textarea>
+                    </br>
                     <div><button v-on:click="deletePost(post)"   class="dropdown-item deletePostMenuItem fa fa-pencil" > Delete</button></div>
 
                 </div>

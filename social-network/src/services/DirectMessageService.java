@@ -18,6 +18,12 @@ public class DirectMessageService {
 
     public DirectMessageService() {directMessageRepository = RepoFactory.directMessageRepository;}
 
+    public DirectMessageService(DirectMessageRepository directMessageRepository) {
+        this.directMessageRepository = directMessageRepository;
+
+
+    }
+
 
 
 

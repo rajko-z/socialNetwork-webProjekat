@@ -4,9 +4,13 @@ import com.google.gson.Gson;
 import dto.SearchUsersAdminDto;
 import dto.user.UserDTO;
 import exceptions.BadRequestException;
+import exceptions.ForbiddenAccessException;
+import model.DirectMessage;
 import model.Role;
 import model.User;
 import repository.RepoFactory;
+import services.DirectMessageService;
+import services.PostService;
 import services.UserService;
 import spark.Request;
 import spark.Response;
@@ -22,7 +26,8 @@ import static spark.Spark.halt;
 public class AdminController {
     private static final UserService userService = new UserService(RepoFactory.userRepo);
 
-
+    private static final PostService postService = new PostService(RepoFactory.postRepo);
+    private static final DirectMessageService directMessageService = new DirectMessageService(RepoFactory.directMessageRepository);
     //vraca listu svih regula
     public static Object getAllUsers(Request request, Response response) {
         User currentUser = JWTUtils.getUserIfLoggedIn(request);
@@ -76,6 +81,36 @@ public class AdminController {
                 .collect(Collectors.toList());
 
         return gson.toJson(retVal);
+    }
+
+
+    public static Object deletePostAdmin(Request req, Response res) {
+        User user = JWTUtils.getUserIfLoggedIn(req);
+        if (user == null) {
+            halt(401, "Unauthorized");
+        }
+        long postId;
+        String txt;
+        try {
+            postId = Long.parseLong(req.params("id"));
+            txt = req.params("text");
+        } catch (NumberFormatException e) {
+            res.status(400);
+            return "Bad request. Post id should be number.";
+        }
+
+        try {
+            String text = "Vas post je obrisan od strane admina: "+txt;
+            DirectMessage dm =directMessageService.sendDirectMessage(user,postService.getUserFromPost(postId),text);
+            postService.deletePostById(postId, user);
+            return "Successfully deleted post.";
+        } catch (BadRequestException e) {
+            res.status(400);
+            return e.getMessage();
+        } catch (ForbiddenAccessException e) {
+            res.status(403);
+            return e.getMessage();
+        }
     }
 
 
