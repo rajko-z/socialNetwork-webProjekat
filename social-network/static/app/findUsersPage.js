@@ -4,7 +4,7 @@ Vue.component("find-user-page", {
             name: "",
             surname: "",
             sortBy:"",
-            dateOfBirthMin:"0001-01-01",
+            dateOfBirthMin:"1922-01-01",
             dateOfBirthMax: "2022-12-12",
             users:[]
         }
@@ -50,14 +50,14 @@ Vue.component("find-user-page", {
             <input v-model="surname" type="text" class="form-control" placeholder="Surname" value="" />
         </div>
           <div class="form-group">
-              <label >Stariji od:</label>
+              <label >Older than:</label>
         </div>
         <div class="form-group">
             
             <input v-model="dateOfBirthMin" type="date" class="form-control" placeholder="Your Date of birth *" value="" />
         </div>
         <div class="form-group">
-              <label >Mladji od:</label>
+              <label >Younger than:</label>
         </div>
         <div class="form-group">
             <input v-model="dateOfBirthMax" type="date" class="form-control" placeholder="Your Date of birth *" value="" />
@@ -78,17 +78,9 @@ Vue.component("find-user-page", {
             <label>Birthday</label>          
         </div>
         
-     
-        
-        
-        
-     
-             
-       
-       
        <div class="reg-container"> 
             <user-info v-for="user in users" :user="user" view="small"></user-info>
-            <h1 v-if="!users.length">Pretrazi!</h1>
+            <h5 v-if="!users.length">No users found.</h5>
        </div>
         
         

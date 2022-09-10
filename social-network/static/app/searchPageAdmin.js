@@ -72,7 +72,7 @@ Vue.component("search-page-admin", {
 
        <div class="reg-container"> 
             <user-info v-for="user in users" :user="user" view="small"></user-info>
-            <h1 v-if="!users.length">Pretrazi!</h1>
+            <h5 v-if="!users.length">No users found.</h5>
        </div>
         
         

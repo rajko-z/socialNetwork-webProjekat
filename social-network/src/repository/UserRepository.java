@@ -10,10 +10,7 @@ import util.CSVFormatUtil;
 import util.DateUtil;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserRepository extends GenericRepository<User> {
@@ -38,24 +35,21 @@ public class UserRepository extends GenericRepository<User> {
 	public List<User> getAllUsersSearch(SearchUsersDto srcDto){
 
 		List<User> users =  this.data.values().stream()
-				.filter( u -> (srcDto.getName()==null || srcDto.getName().trim().equals("") || srcDto.getName().toUpperCase(Locale.ROOT).equals(u.getName().toUpperCase()))
-						&&(srcDto.getSurname()==null || srcDto.getSurname().trim().equals("") || srcDto.getSurname().toUpperCase(Locale.ROOT).equals(u.getSurname().toUpperCase()))
+				.filter( u -> (srcDto.getName()==null || srcDto.getName().trim().equals("") || (u.getName().toUpperCase()).contains(srcDto.getName().toUpperCase(Locale.ROOT)))
+						&&(srcDto.getSurname()==null || srcDto.getSurname().trim().equals("") || (u.getSurname().toUpperCase()).contains(srcDto.getSurname().toUpperCase(Locale.ROOT)))
 						&&(srcDto.getDateOfBirthMin() ==null || srcDto.getDateOfBirthMin().isBefore(u.getDateOfBirth()))
 						&&(srcDto.getDateOfBirthMax() ==null || srcDto.getDateOfBirthMax().isAfter(u.getDateOfBirth()))
 						&&(u.getRole().equals(Role.REGULAR))
 						).collect(Collectors.toList());
 		if(srcDto.getSortBy().toUpperCase(Locale.ROOT).equals("SURNAME"))
 		{
-			users.sort((object1, object2) -> object1.getSurname().toUpperCase(Locale.ROOT).compareTo(object2.getSurname().toUpperCase(Locale.ROOT)));
+			users.sort(Comparator.comparing(object -> object.getSurname().toUpperCase(Locale.ROOT)));
 		} else if (srcDto.getSortBy().toUpperCase().equals("BIRTHDAY")) {
-			users.sort((object1, object2) -> object1.getDateOfBirth().compareTo(object2.getDateOfBirth()));
-			
+			users.sort(Comparator.comparing(User::getDateOfBirth));
 		}
 		else {
-			users.sort((object1, object2) -> object1.getName().toUpperCase(Locale.ROOT).compareTo(object2.getName().toUpperCase(Locale.ROOT)));
-
+			users.sort(Comparator.comparing(object -> object.getName().toUpperCase(Locale.ROOT)));
 		}
-
 		return users;
 	}
 
@@ -64,33 +58,26 @@ public class UserRepository extends GenericRepository<User> {
 	public List<User> getAllUsersSearchAdmin(SearchUsersAdminDto srcDto){
 
 		List<User> users =  this.data.values().stream()
-				.filter( u -> (srcDto.getName()==null || srcDto.getName().trim().equals("") || srcDto.getName().toUpperCase(Locale.ROOT).equals(u.getName().toUpperCase()))
-						&&(srcDto.getSurname()==null || srcDto.getSurname().trim().equals("") || srcDto.getSurname().toUpperCase(Locale.ROOT).equals(u.getSurname().toUpperCase()))
-						&&(srcDto.getUsername()==null || srcDto.getUsername().trim().equals("") || srcDto.getUsername().toUpperCase(Locale.ROOT).equals(u.getUsername().toUpperCase()))
+				.filter( u -> (srcDto.getName()==null || srcDto.getName().trim().equals("") ||  (u.getName().toUpperCase()).contains(srcDto.getName().toUpperCase(Locale.ROOT)))
+						&&(srcDto.getSurname()==null || srcDto.getSurname().trim().equals("") || (u.getSurname().toUpperCase()).contains(srcDto.getSurname().toUpperCase(Locale.ROOT)))
+						&&(srcDto.getUsername()==null || srcDto.getUsername().trim().equals("") || (u.getUsername().toUpperCase()).contains(srcDto.getUsername().toUpperCase(Locale.ROOT)))
 						&&(u.getRole().equals(Role.REGULAR))
 				).collect(Collectors.toList());
 		if(srcDto.getSortBy().toUpperCase(Locale.ROOT).equals("SURNAME"))
 		{
-			users.sort((object1, object2) -> object1.getSurname().toUpperCase(Locale.ROOT).compareTo(object2.getSurname().toUpperCase(Locale.ROOT)));
+			users.sort(Comparator.comparing(object -> object.getSurname().toUpperCase(Locale.ROOT)));
 		} else if (srcDto.getSortBy().toUpperCase().equals("BIRTHDAY")) {
-			users.sort((object1, object2) -> object1.getDateOfBirth().compareTo(object2.getDateOfBirth()));
-
+			users.sort(Comparator.comparing(User::getDateOfBirth));
 		}
 		 else if (srcDto.getSortBy().toUpperCase().equals("USERNAME")) {
-		users.sort((object1, object2) -> object1.getUsername().toUpperCase(Locale.ROOT).compareTo(object2.getUsername().toUpperCase(Locale.ROOT)));
-
-	}
+		users.sort(Comparator.comparing(object -> object.getUsername().toUpperCase(Locale.ROOT)));
+		}
 		else { // slucaj sortiranja po imenu on se inace podrazumeva
-			users.sort((object1, object2) -> object1.getName().toUpperCase(Locale.ROOT).compareTo(object2.getName().toUpperCase(Locale.ROOT)));
-
+			users.sort(Comparator.comparing(object -> object.getName().toUpperCase(Locale.ROOT)));
 		}
 
 		return users;
 	}
-
-
-
-
 
 
 	public User getByUsernameAndPassword(String username, String password) {
