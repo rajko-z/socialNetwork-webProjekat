@@ -148,6 +148,9 @@ Vue.component("user-info", {
             </tr>
         </table>
        <div v-if="loggedUser != null && loggedUser.role==='ADMIN'" style="margin-left: 15%">
+       
+             <button v-on:click="openChat()" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Send message</button>
+            &nbsp;&nbsp;
             <button title="Unblock" style="font-size: 14px;color:darkblue" v-on:click="changeStatus()" v-if="isBlocked" class="btn"><i class="fa fa-plus"></i></button>
              <button title="Block" style="font-size: 14px;color:darkblue" v-on:click="changeStatus()" v-else-if="!isBlocked" class="btn"><i class="fa fa-minus"></i></button>
            

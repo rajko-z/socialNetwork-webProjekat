@@ -5,6 +5,7 @@ import dto.message.DirectMessageDTO;
 import dto.message.NewMessageDTO;
 import exceptions.BadRequestException;
 import model.DirectMessage;
+import model.Role;
 import model.User;
 import repository.RepoFactory;
 import services.DirectMessageService;
@@ -59,12 +60,12 @@ public class DirectMessageController {
             res.status(400);
             return "Bad Request. Message is empty.";
         }
-        if (!currentUser.getFriends().contains(sendTo))
-        {
-            res.status(400);
-            return "You and "+ sendTo.getUsername()+" are not friends";
+        if(!currentUser.getRole().equals(Role.ADMIN)) {
+            if (!currentUser.getFriends().contains(sendTo)) {
+                res.status(400);
+                return "You and " + sendTo.getUsername() + " are not friends";
+            }
         }
-
 
         try {
 
