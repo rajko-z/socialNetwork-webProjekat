@@ -42,6 +42,9 @@ public class DirectMessageService {
         return  directMessageRepository.getChat(from.getId(),to.getId());
     }
 
+    public List<DirectMessage> getMessagesFromAdmin ( User to){
+        return  directMessageRepository.getChatFromAdmin(to.getId());
+    }
 
 
 

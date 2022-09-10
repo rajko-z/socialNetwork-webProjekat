@@ -10,6 +10,7 @@ const FriendRequestPage = {template: '<friend-request-page></friend-request-page
 const MessagePage = {template: '<message-page></message-page>'}
 const FindUsersPage = {template:'<find-user-page></find-user-page>'}
 const SearchPageAdmin = {template:'<search-page-admin></search-page-admin>'}
+const MessagePageFromAdmin= {template: '<message-form-admin></message-form-admin>'}
 
 
 const router = new VueRouter({
@@ -28,6 +29,7 @@ const router = new VueRouter({
 		{ path: '/messages:username', name: 'messages', component: MessagePage},
 		{ path: '/findUsersPage', component: FindUsersPage},
 		{ path: '/searchAdmin', component: SearchPageAdmin},
+		{ path: '/adminMessages:username',name:'messagesAdmin',  component: MessagePageFromAdmin}
 
 
 	]
@@ -97,7 +99,18 @@ const app = new Vue({
 				}
 			});
 			this.$router.go();
+		},
+		messAdmin: function(){
+			let username = window.getCurrentUser().username;
+			router.push({
+				name: 'messagesAdmin',
+				params: {
+					username: username
+				}
+			});
+			this.$router.go();
 		}
+
 	},
 
 });

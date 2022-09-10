@@ -49,5 +49,18 @@ public class DirectMessageRepository extends GenericRepository<DirectMessage> {
 		return directMessageList;
 
 	}
+
+
+	public List<DirectMessage> getChatFromAdmin( long idUserTo)
+	{
+		List<DirectMessage> directMessageList;
+		directMessageList =  this.data.values().stream()
+				.filter(u ->
+						 u.getTo().getId().equals(idUserTo) && u.isAdminSent()==true )
+				.collect(Collectors.toList());
+
+		return directMessageList;
+
+	}
 	
 }

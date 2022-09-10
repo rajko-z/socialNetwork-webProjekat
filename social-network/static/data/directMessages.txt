@@ -6,3 +6,11 @@
 9|1|3|Vas post je obrisan od strane admina: ovo ide u kantu|2022-09-09 19:11:04|true
 10|3|4|cao saro sta ima|2022-09-09 19:17:42|false
 11|4|3|evo nema nista, ima li kod tebe sta|2022-09-09 19:18:26|false
+12|3|8|znam davide svi mi to kazu|2022-09-09 22:32:36|false
+13|1|4|Vas post je obrisan od strane admina: nije lepa slika|2022-09-09 22:34:22|true
+14|8|3|izvini samo sam bio fin|2022-09-09 22:50:30|false
+15|3|8|csa|2022-09-10 04:47:05|false
+16|3|5|cao elisa|2022-09-10 04:47:16|false
+17|3|5|Elisa, nisi mi odgovirala na poruku.|2022-09-10 09:05:28|false
+18|1|3|Vas post je obrisan od strane admina: Obrisacu ovu patetiku.|2022-09-10 09:19:40|true
+19|2|3|Vas post je obrisan od strane admina: I ovaj brisaem|2022-09-10 09:47:44|true

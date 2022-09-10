@@ -56,6 +56,7 @@ Vue.component("friend-list", {
     template: `
 <div class="friendListContainer">
     <h5 v-if="currentUser.username===username" style="color:darkblue">My friends ({{friends.length}})</h5>
+    <h5 v-else-if="currentUser.role === 'ADMIN'"style="color:darkblue">Friends of {{username}} ({{friends.length}})</h5>
     <h5 v-else style="color:darkblue">Common friends ({{friends.length}})</h5>
     <hr>
     <user-info v-for="friend in friends" :user="friend" view="small"></user-info>

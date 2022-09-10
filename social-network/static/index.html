@@ -54,6 +54,9 @@
                     <a href="#" v-on:click="mess()"><span class="fa fa-paper-plane"></span> Messages</a>
                 </li>
                 <li>
+                    <a href="#" v-on:click="messAdmin()"><span class="fa fa-paper-plane"></span> Admin Messages</a>
+                </li>
+                <li>
                     <a href="#" v-on:click="changePassword()"><span class="fa fa-key"></span>Change Password</a>
                 </li>
                 <li>
@@ -75,9 +78,9 @@
                 <li>
                     <a href="#"  v-on:click="searchAdmin()"><span class="fa fa-search"></span>Find Users</a>
                 </li>
-                <li>
-                    <a href="#" v-on:click="mess()"><span class="fa fa-paper-plane"></span> Messages</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="#" v-on:click="mess()"><span class="fa fa-paper-plane"></span> Messages</a>-->
+<!--                </li>-->
                 <li>
                     <a href="#" v-on:click="changePassword()"><span class="fa fa-key"></span>Change Password</a>
                 </li>
@@ -124,7 +127,7 @@
 <script src="app/common/auth.js"></script>
 
 <!-- components -->
-
+<script src="app/messagesFromAdminPage.js"></script>
 <script src="app/searchPageAdmin.js"></script>
 <script src="app/findUsersPage.js"></script>
 <script src="app/chatComponent.js"></script>

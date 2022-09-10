@@ -39,3 +39,5 @@
 38|3|smejem se smejem se|2022-09-05 21:10:50|null|true
 39|3|oci nos usta fd fd fd fd|2022-09-05 21:10:56|2022-09-05 21:11:15|false
 40|4|o da|2022-09-05 21:12:19|null|false
+41|3|Bas ti je lepa slika|2022-09-09 22:32:05|null|false
+42|3|nov kom|2022-09-10 09:04:45|null|false

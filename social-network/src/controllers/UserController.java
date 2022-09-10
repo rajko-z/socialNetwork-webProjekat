@@ -187,7 +187,7 @@ public class UserController {
             return "User with username: " + username + " not found.";
         }
 
-        if (user.isAccountPrivate()) {
+        if (user.isAccountPrivate() && !currentUser.getRole().equals(Role.ADMIN)) {
             if (currentUser == null) {
                 halt(401, "Unauthorized");
             } else {
